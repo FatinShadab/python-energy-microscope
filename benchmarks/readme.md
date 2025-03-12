@@ -105,7 +105,7 @@ Each algorithm has four subfolders for implementation in different execution env
 - **Ctypes**: Implementation using C libraries and Python's `ctypes` library for low-level memory management.
 - **Cython**: Implementation using Cython for optimized performance by converting Python code to C.
 
----
+
 
 ## Example Folder Structure for One Algorithm (Binary-Trees)
 
