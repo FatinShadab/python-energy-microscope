@@ -26,7 +26,7 @@ We approximate it using the **Power Iteration Method**:
    \| A \| \approx \sqrt{ (A \cdot u) \cdot u }
    \]
 
-### **Time Complexity**
+## **Time Complexity**
 The power iteration method primarily involves matrix-vector multiplication at each iteration. Let \( n \) be the size of the matrix:
 
 - **Matrix-vector multiplication** takes \( O(n^2) \) time.
@@ -40,7 +40,7 @@ O(k \cdot n^2)
 
 where \( k \) is the number of iterations, and \( n \) is the number of rows/columns in the square matrix.
 
-### **Space Complexity**
+## **Space Complexity**
 The space complexity is determined by the storage requirements for the matrix and vectors:
 
 - **Matrix** requires \( O(n^2) \) space.
