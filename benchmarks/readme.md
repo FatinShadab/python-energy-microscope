@@ -124,6 +124,7 @@ benchmarks/
 ```
 
 ## Algorithm List
+> Mixture of various algorithms with algorithms from [CLBG (Computer Language Benchmarks Game)](https://en.wikipedia.org/wiki/The_Computer_Language_Benchmarks_Game)
 
 1. **Binary Trees**
 2. **Fannkuch-Redux**
