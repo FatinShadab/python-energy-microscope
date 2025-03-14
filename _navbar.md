@@ -1,4 +1,5 @@
 - [Benchmarks](/benchmarks/)
+  - [K-Nucleotide](/benchmarks/K-Nucleotide/)
   - [Mandelbrot](/benchmarks/Mandelbrot/)
   - [N-Body](/benchmarks/N-Body/)
   - [N-Queens](/benchmarks/N-Queens/)
