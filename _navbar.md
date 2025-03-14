@@ -1,0 +1,12 @@
+- [Benchmarks](/benchmarks/)
+  - [Mandelbrot](/benchmarks/Mandelbrot/)
+  - [N-Body](/benchmarks/N-Body/)
+  - [N-Queens](/benchmarks/N-Queens/)
+  - [Pi-Digits](/benchmarks/Pi-Digits/)
+  - [Reverse-Complement](/benchmarks/Reverse-Complement/)
+  - [Spectral-Norm](/benchmarks/Spectral-Norm/)
+  - [Towers of Hanoi](/benchmarks/Towers-of-Hanoi/)
+- Modules
+    - [Energy Modules](/energy_modules/)
+    - [Time Modules](/time_modules/)
+    - [Visualization](/visualization/)
