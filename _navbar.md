@@ -1,4 +1,5 @@
 - [Benchmarks](/benchmarks/)
+  - [Fannkuch-Redux](/benchmarks/Fannkuch-Redux/)
   - [K-Nucleotide](/benchmarks/K-Nucleotide/)
   - [Mandelbrot](/benchmarks/Mandelbrot/)
   - [N-Body](/benchmarks/N-Body/)
