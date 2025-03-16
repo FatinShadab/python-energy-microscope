@@ -5,6 +5,7 @@
   - [N-Body](/benchmarks/N-Body/)
   - [N-Queens](/benchmarks/N-Queens/)
   - [Pi-Digits](/benchmarks/Pi-Digits/)
+  - [Regex-Redux](/benchmarks/Regex-Redux/)
   - [Reverse-Complement](/benchmarks/Reverse-Complement/)
   - [Spectral-Norm](/benchmarks/Spectral-Norm/)
   - [Towers of Hanoi](/benchmarks/Towers-of-Hanoi/)
