@@ -19,6 +19,10 @@ This study provides an **empirical energy consumption analysis** of these execut
 - **Measure CPU & memory usage** to understand power consumption.  
 - **Contribute to sustainable computing** by identifying optimal execution models.  
 
+## **Research Questions**  
+- **Which Python execution method demonstrates the highest energy efficiency when executing pure Python code with minimal third-party libraries?**
+- **What is the relationship between execution speed and energy consumption across different Python execution methods?**
+
 ## **Benchmarking & Methodology**  
 This study employs **a modified set of Computer Language Benchmarks Game (CLBG) algorithms**, blending standard performance benchmarks with **additional real-world computational tasks**. The benchmarking ensures **fair and consistent execution across all runtime environments** while maintaining **minimal dependencies** for pure execution measurement.
 
@@ -33,13 +37,12 @@ This study employs **a modified set of Computer Language Benchmarks Game (CLBG) 
 - **Performance Profiling**: `timeit`, `memory_profiler`, `cProfile`  
 - **Data Analysis**: Matplotlib, Pandas  
 
-## **Repository Structure**  
+## **Important Repository Structure**  
 ```
 /benchmarks      # Modified CLBG and other algorithms and additional benchmarks  
-/energy_  # Scripts to measure power consumption  
-
-/docs           # Docsify documentation files  
-README.md       # Landing page for Docsify  
+/energy_modules  # Scripts to measure power consumption  
+/time_modules    # Scripts to measure execution time
+/visualization   # Scripts to visualize the mesurement  
 ```
 
 ## **Getting Started**  
