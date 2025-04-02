@@ -1,4 +1,5 @@
 - [Benchmarks](/benchmarks/)
+  - [Binary Trees](/benchmarks/Binary-trees/)
   - [Fannkuch-Redux](/benchmarks/Fannkuch-Redux/)
   - [K-Nucleotide](/benchmarks/K-Nucleotide/)
   - [Mandelbrot](/benchmarks/Mandelbrot/)
