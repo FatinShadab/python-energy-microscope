@@ -15,6 +15,7 @@
   - [Strassen](/benchmarks/Strassen/)
   - [KNN](/benchmarks/KNN/)
 - Modules
-    - [Energy Modules](/energy_modules/)
-    - [Time Modules](/time_modules/)
+    - [Time Module](/time_module/)
+    - [Energy Module](/energy_module/)
+    - [Performance Module](/performance_module/)
     - [Visualization](/visualization/)
