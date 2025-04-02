@@ -1,4 +1,4 @@
-- [Benchmarks](/benchmarks/)
+- [Algorithms](/benchmarks/)
   - [Binary Trees](/benchmarks/Binary-trees/)
   - [Fannkuch-Redux](/benchmarks/Fannkuch-Redux/)
   - [FASTA](/benchmarks/FASTA/)
