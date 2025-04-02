@@ -3,20 +3,25 @@
 This directory contains benchmarks for various algorithms, implemented in multiple Python execution methods.
 
 ## Algorithm List
-> Mixture of various algorithms with algorithms from [CLBG (Computer Language Benchmarks Game)](https://en.wikipedia.org/wiki/The_Computer_Language_Benchmarks_Game)
+> Mixture of various algorithms with algorithms from [CLBG (Computer Language Benchmarks Game)](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html)
 
-1. **Binary Trees**
-2. **Fannkuch-Redux**
-3. **Fasta**
-4. **K-Nucleotide**
-5. **Mandelbrot**
-6. **N-Body**
-7. **Pi-Digits**
-8. **Regex-Redux**
-9. **Reverse-Complement**
-10. **Spectral-Norm**
-11. **Towers of Hanoi**
-12. **N-Queens**
+- **CLBG Algorithms**
+    1. Binary Trees
+    2. Fannkuch-Redux
+    3. Fasta
+    4. K-Nucleotide
+    5. Mandelbrot
+    6. N-Body
+    7. Pi-Digits
+    8. Regex-Redux
+    9. Reverse-Complement
+    10. Spectral-Norm
+- **Extra Algorithms**
+    1. KNN
+    2. N-Queens
+    3. Strassen
+    4. Towers of Hanoi
+    5. Sieve-of-Eratosthenes
 
 ## Directory Structure
 
