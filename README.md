@@ -44,7 +44,7 @@ This study employs **a modified set of Computer Language Benchmarks Game (CLBG) 
 - **I/O & Threading Performance**: File Read/Write, Multi-threading  
 
 ### **Tools Used**  
-- **Energy Measurement**: Intel RAPL, Intel Power Gadget, pyRAPL  
+- **Energy Measurement**: Intel RAPL, pyRAPL  
 - **Performance Profiling**: `timeit`, `memory_profiler`, `cProfile`  
 - **Data Analysis**: Matplotlib, Pandas  
 
