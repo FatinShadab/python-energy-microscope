@@ -14,14 +14,25 @@ With growing concerns about **sustainable computing**, this study examines the *
 This study provides an **empirical energy consumption analysis** of these execution methods using **software-based energy measurement tools**.
 
 ## **Research Objectives**  
-- **Quantify** energy consumption across Python execution methods.  
-- **Analyze trade-offs** between execution speed and energy efficiency.  
-- **Measure CPU & memory usage** to understand power consumption.  
-- **Contribute to sustainable computing** by identifying optimal execution models.  
+1. **Performance & Efficiency Analysis**
+    - Quantify and compare the energy consumption of different Python execution methods.
+
+    - Analyze the trade-offs between execution speed, energy efficiency, and carbon emissions.
+
+    - Measure CPU and memory usage to understand their impact on power consumption.
+
+2. **Practicality & Real-World Application**
+    - Evaluate the scalability and practicality of each execution method for real-world applications.
+
+    - Assess the ease of implementation of different execution methods.
+
+3. **Sustainability & Green Computing**
+    - Contribute to sustainable computing by identifying the most eco-friendly and efficient Python execution models.
 
 ## **Research Questions**  
 - **Which Python execution method demonstrates the highest energy efficiency when executing pure Python code with minimal third-party libraries?**
 - **What is the relationship between execution speed and energy consumption across different Python execution methods?**
+- **Which Python execution method has the lowest carbon footprint according to software energy profiling?**
 
 ## **Benchmarking & Methodology**  
 This study employs **a modified set of Computer Language Benchmarks Game (CLBG) algorithms**, blending standard performance benchmarks with **additional real-world computational tasks**. The benchmarking ensures **fair and consistent execution across all runtime environments** while maintaining **minimal dependencies** for pure execution measurement.
@@ -59,5 +70,6 @@ cd python-energy-microscope
 - Uses modified CLBG algorithms for robust benchmarking.  
 - No third-party Python libraries – Focused on **pure execution measurement**.  
 - Compares multiple execution models, filling a research gap.  
-- Hardware-based energy measurement for accurate results.  
+- **Software-based** energy measurement.
+- Ranking multiple execution models based on **carbon footprint**.
 - Sustainable computing approach, contributing to green software engineering.  
