@@ -3,6 +3,7 @@ import math
 import random
 from collections import Counter
 
+
 class KNN:
     def __init__(self, k: int = 3, mode: str = "classification") -> None:
         """
