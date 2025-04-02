@@ -13,9 +13,7 @@ energy_modules/
 └── README.md
 ```
 
-## Modules
-
-### 1. **pyRAPL**
+## Module
 - Uses the `pyRAPL` library to measure CPU power consumption.
 - Requires `pyRAPL` to be installed.
 - Supports multiple sampling intervals and logging options.
