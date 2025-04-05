@@ -2062,6 +2062,7 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 /* Module declarations from "libc.stdlib" */
 
 /* Module declarations from "raw" */
+static void __pyx_f_3raw_free_tree(struct __pyx_t_3raw_TreeNode *); /*proto*/
 static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int); /*proto*/
 static int __pyx_f_3raw_check_tree(struct __pyx_t_3raw_TreeNode *); /*proto*/
 /* #### Code section: typeinfo ### */
@@ -2369,6 +2370,90 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 /* "raw.pyx":9
  *     TreeNode* right  # Pointer to right child
  * 
+ * cdef void free_tree(TreeNode* node):             # <<<<<<<<<<<<<<
+ *     if node == NULL:
+ *         return
+ */
+
+static void __pyx_f_3raw_free_tree(struct __pyx_t_3raw_TreeNode *__pyx_v_node) {
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "raw.pyx":10
+ * 
+ * cdef void free_tree(TreeNode* node):
+ *     if node == NULL:             # <<<<<<<<<<<<<<
+ *         return
+ *     free_tree(node.left)
+ */
+  __pyx_t_1 = (__pyx_v_node == NULL);
+  if (__pyx_t_1) {
+
+    /* "raw.pyx":11
+ * cdef void free_tree(TreeNode* node):
+ *     if node == NULL:
+ *         return             # <<<<<<<<<<<<<<
+ *     free_tree(node.left)
+ *     free_tree(node.right)
+ */
+    goto __pyx_L0;
+
+    /* "raw.pyx":10
+ * 
+ * cdef void free_tree(TreeNode* node):
+ *     if node == NULL:             # <<<<<<<<<<<<<<
+ *         return
+ *     free_tree(node.left)
+ */
+  }
+
+  /* "raw.pyx":12
+ *     if node == NULL:
+ *         return
+ *     free_tree(node.left)             # <<<<<<<<<<<<<<
+ *     free_tree(node.right)
+ *     free(node)
+ */
+  __pyx_f_3raw_free_tree(__pyx_v_node->left); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L1_error)
+
+  /* "raw.pyx":13
+ *         return
+ *     free_tree(node.left)
+ *     free_tree(node.right)             # <<<<<<<<<<<<<<
+ *     free(node)
+ * 
+ */
+  __pyx_f_3raw_free_tree(__pyx_v_node->right); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L1_error)
+
+  /* "raw.pyx":14
+ *     free_tree(node.left)
+ *     free_tree(node.right)
+ *     free(node)             # <<<<<<<<<<<<<<
+ * 
+ * cdef TreeNode* make_tree(int depth):
+ */
+  free(__pyx_v_node);
+
+  /* "raw.pyx":9
+ *     TreeNode* right  # Pointer to right child
+ * 
+ * cdef void free_tree(TreeNode* node):             # <<<<<<<<<<<<<<
+ *     if node == NULL:
+ *         return
+ */
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("raw.free_tree", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_L0:;
+}
+
+/* "raw.pyx":16
+ *     free(node)
+ * 
  * cdef TreeNode* make_tree(int depth):             # <<<<<<<<<<<<<<
  *     # Recursively creates a binary tree of the specified depth.
  * 
@@ -2386,7 +2471,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("make_tree", 1);
 
-  /* "raw.pyx":13
+  /* "raw.pyx":20
  * 
  *     # Allocate memory for a new node
  *     cdef TreeNode* node = <TreeNode*>malloc(sizeof(TreeNode))             # <<<<<<<<<<<<<<
@@ -2395,7 +2480,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
  */
   __pyx_v_node = ((struct __pyx_t_3raw_TreeNode *)malloc((sizeof(struct __pyx_t_3raw_TreeNode))));
 
-  /* "raw.pyx":16
+  /* "raw.pyx":23
  * 
  *     # Check if memory allocation failed
  *     if not node:             # <<<<<<<<<<<<<<
@@ -2405,20 +2490,20 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
   __pyx_t_1 = (!(__pyx_v_node != 0));
   if (unlikely(__pyx_t_1)) {
 
-    /* "raw.pyx":17
+    /* "raw.pyx":24
  *     # Check if memory allocation failed
  *     if not node:
  *         raise MemoryError("Failed to allocate memory for TreeNode")             # <<<<<<<<<<<<<<
  * 
  *     # Initialize child pointers to NULL
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 17, __pyx_L1_error)
+    __PYX_ERR(0, 24, __pyx_L1_error)
 
-    /* "raw.pyx":16
+    /* "raw.pyx":23
  * 
  *     # Check if memory allocation failed
  *     if not node:             # <<<<<<<<<<<<<<
@@ -2427,7 +2512,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
  */
   }
 
-  /* "raw.pyx":20
+  /* "raw.pyx":27
  * 
  *     # Initialize child pointers to NULL
  *     node.left = NULL             # <<<<<<<<<<<<<<
@@ -2436,7 +2521,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
  */
   __pyx_v_node->left = NULL;
 
-  /* "raw.pyx":21
+  /* "raw.pyx":28
  *     # Initialize child pointers to NULL
  *     node.left = NULL
  *     node.right = NULL             # <<<<<<<<<<<<<<
@@ -2445,7 +2530,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
  */
   __pyx_v_node->right = NULL;
 
-  /* "raw.pyx":24
+  /* "raw.pyx":31
  * 
  *     # Recursively create left and right children if depth > 0
  *     if depth > 0:             # <<<<<<<<<<<<<<
@@ -2455,27 +2540,27 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
   __pyx_t_1 = (__pyx_v_depth > 0);
   if (__pyx_t_1) {
 
-    /* "raw.pyx":25
+    /* "raw.pyx":32
  *     # Recursively create left and right children if depth > 0
  *     if depth > 0:
  *         node.left = make_tree(depth - 1)             # <<<<<<<<<<<<<<
  *         node.right = make_tree(depth - 1)
  * 
  */
-    __pyx_t_3 = __pyx_f_3raw_make_tree((__pyx_v_depth - 1)); if (unlikely(__pyx_t_3 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_3raw_make_tree((__pyx_v_depth - 1)); if (unlikely(__pyx_t_3 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L1_error)
     __pyx_v_node->left = __pyx_t_3;
 
-    /* "raw.pyx":26
+    /* "raw.pyx":33
  *     if depth > 0:
  *         node.left = make_tree(depth - 1)
  *         node.right = make_tree(depth - 1)             # <<<<<<<<<<<<<<
  * 
  *     return node
  */
-    __pyx_t_3 = __pyx_f_3raw_make_tree((__pyx_v_depth - 1)); if (unlikely(__pyx_t_3 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_3raw_make_tree((__pyx_v_depth - 1)); if (unlikely(__pyx_t_3 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L1_error)
     __pyx_v_node->right = __pyx_t_3;
 
-    /* "raw.pyx":24
+    /* "raw.pyx":31
  * 
  *     # Recursively create left and right children if depth > 0
  *     if depth > 0:             # <<<<<<<<<<<<<<
@@ -2484,7 +2569,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
  */
   }
 
-  /* "raw.pyx":28
+  /* "raw.pyx":35
  *         node.right = make_tree(depth - 1)
  * 
  *     return node             # <<<<<<<<<<<<<<
@@ -2494,8 +2579,8 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
   __pyx_r = __pyx_v_node;
   goto __pyx_L0;
 
-  /* "raw.pyx":9
- *     TreeNode* right  # Pointer to right child
+  /* "raw.pyx":16
+ *     free(node)
  * 
  * cdef TreeNode* make_tree(int depth):             # <<<<<<<<<<<<<<
  *     # Recursively creates a binary tree of the specified depth.
@@ -2512,7 +2597,7 @@ static struct __pyx_t_3raw_TreeNode *__pyx_f_3raw_make_tree(int __pyx_v_depth) {
   return __pyx_r;
 }
 
-/* "raw.pyx":31
+/* "raw.pyx":38
  * 
  * # Define check_tree to work directly with C pointers.
  * cdef int check_tree(TreeNode* node):             # <<<<<<<<<<<<<<
@@ -2529,7 +2614,7 @@ static int __pyx_f_3raw_check_tree(struct __pyx_t_3raw_TreeNode *__pyx_v_node) {
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "raw.pyx":38
+  /* "raw.pyx":45
  *     #   int: The total number of nodes in the tree.
  * 
  *     if node == NULL:             # <<<<<<<<<<<<<<
@@ -2539,7 +2624,7 @@ static int __pyx_f_3raw_check_tree(struct __pyx_t_3raw_TreeNode *__pyx_v_node) {
   __pyx_t_1 = (__pyx_v_node == NULL);
   if (__pyx_t_1) {
 
-    /* "raw.pyx":39
+    /* "raw.pyx":46
  * 
  *     if node == NULL:
  *         return 0  # Return 0 if the node is NULL to avoid segmentation faults             # <<<<<<<<<<<<<<
@@ -2549,7 +2634,7 @@ static int __pyx_f_3raw_check_tree(struct __pyx_t_3raw_TreeNode *__pyx_v_node) {
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "raw.pyx":38
+    /* "raw.pyx":45
  *     #   int: The total number of nodes in the tree.
  * 
  *     if node == NULL:             # <<<<<<<<<<<<<<
@@ -2558,19 +2643,19 @@ static int __pyx_f_3raw_check_tree(struct __pyx_t_3raw_TreeNode *__pyx_v_node) {
  */
   }
 
-  /* "raw.pyx":42
+  /* "raw.pyx":49
  * 
  *     # Directly access node's left and right pointers (as C objects)
  *     return 1 + check_tree(node.left) + check_tree(node.right)             # <<<<<<<<<<<<<<
  * 
  * def main(int n):
  */
-  __pyx_t_2 = __pyx_f_3raw_check_tree(__pyx_v_node->left); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)
-  __pyx_t_3 = __pyx_f_3raw_check_tree(__pyx_v_node->right); if (unlikely(__pyx_t_3 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_3raw_check_tree(__pyx_v_node->left); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_3raw_check_tree(__pyx_v_node->right); if (unlikely(__pyx_t_3 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L1_error)
   __pyx_r = ((1 + __pyx_t_2) + __pyx_t_3);
   goto __pyx_L0;
 
-  /* "raw.pyx":31
+  /* "raw.pyx":38
  * 
  * # Define check_tree to work directly with C pointers.
  * cdef int check_tree(TreeNode* node):             # <<<<<<<<<<<<<<
@@ -2586,7 +2671,7 @@ static int __pyx_f_3raw_check_tree(struct __pyx_t_3raw_TreeNode *__pyx_v_node) {
   return __pyx_r;
 }
 
-/* "raw.pyx":44
+/* "raw.pyx":51
  *     return 1 + check_tree(node.left) + check_tree(node.right)
  * 
  * def main(int n):             # <<<<<<<<<<<<<<
@@ -2647,23 +2732,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 51, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "main") < 0)) __PYX_ERR(0, 44, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "main") < 0)) __PYX_ERR(0, 51, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_n = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L3_error)
+    __pyx_v_n = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 51, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("main", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 44, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("main", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 51, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2721,7 +2806,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 1);
 
-  /* "raw.pyx":51
+  /* "raw.pyx":58
  *     #    n (int): The maximum depth for the trees to be allocated.
  * 
  *     cdef int min_depth = 4             # <<<<<<<<<<<<<<
@@ -2730,7 +2815,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
  */
   __pyx_v_min_depth = 4;
 
-  /* "raw.pyx":52
+  /* "raw.pyx":59
  * 
  *     cdef int min_depth = 4
  *     cdef int max_depth = max(min_depth + 2, n)             # <<<<<<<<<<<<<<
@@ -2747,7 +2832,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   }
   __pyx_v_max_depth = __pyx_t_3;
 
-  /* "raw.pyx":53
+  /* "raw.pyx":60
  *     cdef int min_depth = 4
  *     cdef int max_depth = max(min_depth + 2, n)
  *     cdef int stretch_depth = max_depth + 1             # <<<<<<<<<<<<<<
@@ -2756,24 +2841,24 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
  */
   __pyx_v_stretch_depth = (__pyx_v_max_depth + 1);
 
-  /* "raw.pyx":57
+  /* "raw.pyx":64
  * 
  *     # Stretch tree: Creates a tree of depth `stretch_depth` and counts its nodes.
  *     stretch_tree = make_tree(stretch_depth)             # <<<<<<<<<<<<<<
  *     print(f"stretch tree of depth {stretch_depth}\t check: {check_tree(stretch_tree)}")
- *     free(stretch_tree)
+ *     free_tree(stretch_tree)
  */
-  __pyx_t_5 = __pyx_f_3raw_make_tree(__pyx_v_stretch_depth); if (unlikely(__pyx_t_5 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_3raw_make_tree(__pyx_v_stretch_depth); if (unlikely(__pyx_t_5 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 64, __pyx_L1_error)
   __pyx_v_stretch_tree = __pyx_t_5;
 
-  /* "raw.pyx":58
+  /* "raw.pyx":65
  *     # Stretch tree: Creates a tree of depth `stretch_depth` and counts its nodes.
  *     stretch_tree = make_tree(stretch_depth)
  *     print(f"stretch tree of depth {stretch_depth}\t check: {check_tree(stretch_tree)}")             # <<<<<<<<<<<<<<
- *     free(stretch_tree)
+ *     free_tree(stretch_tree)
  * 
  */
-  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 0;
   __pyx_t_8 = 127;
@@ -2781,7 +2866,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   __pyx_t_7 += 22;
   __Pyx_GIVEREF(__pyx_kp_u_stretch_tree_of_depth);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_kp_u_stretch_tree_of_depth);
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_stretch_depth, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_stretch_depth, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
@@ -2791,41 +2876,41 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   __pyx_t_7 += 9;
   __Pyx_GIVEREF(__pyx_kp_u_check);
   PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_kp_u_check);
-  __pyx_t_1 = __pyx_f_3raw_check_tree(__pyx_v_stretch_tree); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L1_error)
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_t_1, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3raw_check_tree(__pyx_v_stretch_tree); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_t_1, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_6, 4, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_6, 4, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "raw.pyx":59
+  /* "raw.pyx":66
  *     stretch_tree = make_tree(stretch_depth)
  *     print(f"stretch tree of depth {stretch_depth}\t check: {check_tree(stretch_tree)}")
- *     free(stretch_tree)             # <<<<<<<<<<<<<<
+ *     free_tree(stretch_tree)             # <<<<<<<<<<<<<<
  * 
  *     # Long-lived tree: Allocates a tree of depth `max_depth` that persists while other trees are deallocated.
  */
-  free(__pyx_v_stretch_tree);
+  __pyx_f_3raw_free_tree(__pyx_v_stretch_tree); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
 
-  /* "raw.pyx":62
+  /* "raw.pyx":69
  * 
  *     # Long-lived tree: Allocates a tree of depth `max_depth` that persists while other trees are deallocated.
  *     cdef TreeNode* long_lived_tree = make_tree(max_depth)             # <<<<<<<<<<<<<<
  * 
  *     # Iterate over depths, creating and checking multiple trees per depth.
  */
-  __pyx_t_5 = __pyx_f_3raw_make_tree(__pyx_v_max_depth); if (unlikely(__pyx_t_5 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_3raw_make_tree(__pyx_v_max_depth); if (unlikely(__pyx_t_5 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L1_error)
   __pyx_v_long_lived_tree = __pyx_t_5;
 
-  /* "raw.pyx":68
+  /* "raw.pyx":75
  *     cdef TreeNode* temp_tree
  * 
  *     for depth in range(min_depth, max_depth + 1, 2):             # <<<<<<<<<<<<<<
@@ -2837,7 +2922,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   for (__pyx_t_1 = __pyx_v_min_depth; __pyx_t_1 < __pyx_t_2; __pyx_t_1+=2) {
     __pyx_v_depth = __pyx_t_1;
 
-    /* "raw.pyx":69
+    /* "raw.pyx":76
  * 
  *     for depth in range(min_depth, max_depth + 1, 2):
  *         iterations = <int>(2 ** (max_depth - depth + min_depth))  # Ensure `iterations` is an integer             # <<<<<<<<<<<<<<
@@ -2846,7 +2931,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
  */
     __pyx_v_iterations = ((int)pow(2.0, ((double)((__pyx_v_max_depth - __pyx_v_depth) + __pyx_v_min_depth))));
 
-    /* "raw.pyx":70
+    /* "raw.pyx":77
  *     for depth in range(min_depth, max_depth + 1, 2):
  *         iterations = <int>(2 ** (max_depth - depth + min_depth))  # Ensure `iterations` is an integer
  *         check = 0             # <<<<<<<<<<<<<<
@@ -2855,7 +2940,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
  */
     __pyx_v_check = 0;
 
-    /* "raw.pyx":72
+    /* "raw.pyx":79
  *         check = 0
  * 
  *         for i in range(iterations):             # <<<<<<<<<<<<<<
@@ -2867,48 +2952,48 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_i = __pyx_t_12;
 
-      /* "raw.pyx":73
+      /* "raw.pyx":80
  * 
  *         for i in range(iterations):
  *             temp_tree = make_tree(depth)             # <<<<<<<<<<<<<<
  *             check += check_tree(temp_tree)
- *             free(temp_tree)
+ *             free_tree(temp_tree)
  */
-      __pyx_t_5 = __pyx_f_3raw_make_tree(__pyx_v_depth); if (unlikely(__pyx_t_5 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L1_error)
+      __pyx_t_5 = __pyx_f_3raw_make_tree(__pyx_v_depth); if (unlikely(__pyx_t_5 == ((struct __pyx_t_3raw_TreeNode *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L1_error)
       __pyx_v_temp_tree = __pyx_t_5;
 
-      /* "raw.pyx":74
+      /* "raw.pyx":81
  *         for i in range(iterations):
  *             temp_tree = make_tree(depth)
  *             check += check_tree(temp_tree)             # <<<<<<<<<<<<<<
- *             free(temp_tree)
+ *             free_tree(temp_tree)
  * 
  */
-      __pyx_t_13 = __pyx_f_3raw_check_tree(__pyx_v_temp_tree); if (unlikely(__pyx_t_13 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_3raw_check_tree(__pyx_v_temp_tree); if (unlikely(__pyx_t_13 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 81, __pyx_L1_error)
       __pyx_v_check = (__pyx_v_check + __pyx_t_13);
 
-      /* "raw.pyx":75
+      /* "raw.pyx":82
  *             temp_tree = make_tree(depth)
  *             check += check_tree(temp_tree)
- *             free(temp_tree)             # <<<<<<<<<<<<<<
+ *             free_tree(temp_tree)             # <<<<<<<<<<<<<<
  * 
  *         print(f"{iterations}\t trees of depth {depth}\t check: {check}")
  */
-      free(__pyx_v_temp_tree);
+      __pyx_f_3raw_free_tree(__pyx_v_temp_tree); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L1_error)
     }
 
-    /* "raw.pyx":77
- *             free(temp_tree)
+    /* "raw.pyx":84
+ *             free_tree(temp_tree)
  * 
  *         print(f"{iterations}\t trees of depth {depth}\t check: {check}")             # <<<<<<<<<<<<<<
  * 
  *     # Output result for the long-lived tree.
  */
-    __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = 0;
     __pyx_t_8 = 127;
-    __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_iterations, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_iterations, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_9);
@@ -2918,7 +3003,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
     __pyx_t_7 += 17;
     __Pyx_GIVEREF(__pyx_kp_u_trees_of_depth);
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_kp_u_trees_of_depth);
-    __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_depth, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_depth, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_9);
@@ -2928,28 +3013,28 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
     __pyx_t_7 += 9;
     __Pyx_GIVEREF(__pyx_kp_u_check);
     PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_kp_u_check);
-    __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_check, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_check, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_9);
     PyTuple_SET_ITEM(__pyx_t_6, 4, __pyx_t_9);
     __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_6, 5, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_6, 5, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
 
-  /* "raw.pyx":80
+  /* "raw.pyx":87
  * 
  *     # Output result for the long-lived tree.
  *     print(f"long lived tree of depth {max_depth}\t check: {check_tree(long_lived_tree)}")             # <<<<<<<<<<<<<<
- *     free(long_lived_tree)
+ *     free_tree(long_lived_tree)
  */
-  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = 0;
   __pyx_t_8 = 127;
@@ -2957,7 +3042,7 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   __pyx_t_7 += 25;
   __Pyx_GIVEREF(__pyx_kp_u_long_lived_tree_of_depth);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_kp_u_long_lived_tree_of_depth);
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_max_depth, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_max_depth, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
@@ -2967,29 +3052,29 @@ static PyObject *__pyx_pf_3raw_main(CYTHON_UNUSED PyObject *__pyx_self, int __py
   __pyx_t_7 += 9;
   __Pyx_GIVEREF(__pyx_kp_u_check);
   PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_kp_u_check);
-  __pyx_t_1 = __pyx_f_3raw_check_tree(__pyx_v_long_lived_tree); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L1_error)
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_t_1, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_3raw_check_tree(__pyx_v_long_lived_tree); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_t_1, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_7 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_6, 4, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_6, 4, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "raw.pyx":81
+  /* "raw.pyx":88
  *     # Output result for the long-lived tree.
  *     print(f"long lived tree of depth {max_depth}\t check: {check_tree(long_lived_tree)}")
- *     free(long_lived_tree)             # <<<<<<<<<<<<<<
+ *     free_tree(long_lived_tree)             # <<<<<<<<<<<<<<
  */
-  free(__pyx_v_long_lived_tree);
+  __pyx_f_3raw_free_tree(__pyx_v_long_lived_tree); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
 
-  /* "raw.pyx":44
+  /* "raw.pyx":51
  *     return 1 + check_tree(node.left) + check_tree(node.right)
  * 
  * def main(int n):             # <<<<<<<<<<<<<<
@@ -3062,9 +3147,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 17, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 58, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 75, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3075,28 +3160,28 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "raw.pyx":17
+  /* "raw.pyx":24
  *     # Check if memory allocation failed
  *     if not node:
  *         raise MemoryError("Failed to allocate memory for TreeNode")             # <<<<<<<<<<<<<<
  * 
  *     # Initialize child pointers to NULL
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Failed_to_allocate_memory_for_Tr); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Failed_to_allocate_memory_for_Tr); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "raw.pyx":44
+  /* "raw.pyx":51
  *     return 1 + check_tree(node.left) + check_tree(node.right)
  * 
  * def main(int n):             # <<<<<<<<<<<<<<
  *     # Main function to execute the binary tree operations.
  *     # Allocates and deallocates trees of various depths,
  */
-  __pyx_tuple__2 = PyTuple_Pack(11, __pyx_n_s_n, __pyx_n_s_min_depth, __pyx_n_s_max_depth, __pyx_n_s_stretch_depth, __pyx_n_s_stretch_tree, __pyx_n_s_long_lived_tree, __pyx_n_s_depth, __pyx_n_s_iterations, __pyx_n_s_check_2, __pyx_n_s_i, __pyx_n_s_temp_tree); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(11, __pyx_n_s_n, __pyx_n_s_min_depth, __pyx_n_s_max_depth, __pyx_n_s_stretch_depth, __pyx_n_s_stretch_tree, __pyx_n_s_long_lived_tree, __pyx_n_s_depth, __pyx_n_s_iterations, __pyx_n_s_check_2, __pyx_n_s_i, __pyx_n_s_temp_tree); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_raw_pyx, __pyx_n_s_main_2, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_raw_pyx, __pyx_n_s_main_2, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3460,16 +3545,16 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "raw.pyx":44
+  /* "raw.pyx":51
  *     return 1 + check_tree(node.left) + check_tree(node.right)
  * 
  * def main(int n):             # <<<<<<<<<<<<<<
  *     # Main function to execute the binary tree operations.
  *     # Allocates and deallocates trees of various depths,
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3raw_1main, 0, __pyx_n_s_main_2, NULL, __pyx_n_s_raw, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3raw_1main, 0, __pyx_n_s_main_2, NULL, __pyx_n_s_raw, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_2) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_2) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "raw.pyx":1
