@@ -1,4 +1,5 @@
 import sys
+import timeit
 
 
 class TreeNode:
@@ -94,4 +95,5 @@ if __name__ == "__main__":
     for the depth of the trees (default is 10 if no argument is provided).
     """
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
-    main(n)
+    runtime = timeit.timeit(lambda: main(n), number=1)
+    print(f"Execution time for n={n}: {runtime:.6f} seconds")
