@@ -6,6 +6,13 @@ cdef struct TreeNode:
     TreeNode* left  # Pointer to left child
     TreeNode* right  # Pointer to right child
 
+cdef void free_tree(TreeNode* node):
+    if node == NULL:
+        return
+    free_tree(node.left)
+    free_tree(node.right)
+    free(node)
+
 cdef TreeNode* make_tree(int depth):
     # Recursively creates a binary tree of the specified depth.
     
@@ -56,7 +63,7 @@ def main(int n):
     # Stretch tree: Creates a tree of depth `stretch_depth` and counts its nodes.
     stretch_tree = make_tree(stretch_depth)
     print(f"stretch tree of depth {stretch_depth}\t check: {check_tree(stretch_tree)}")
-    free(stretch_tree)
+    free_tree(stretch_tree)
     
     # Long-lived tree: Allocates a tree of depth `max_depth` that persists while other trees are deallocated.
     cdef TreeNode* long_lived_tree = make_tree(max_depth)
@@ -72,10 +79,10 @@ def main(int n):
         for i in range(iterations):
             temp_tree = make_tree(depth)
             check += check_tree(temp_tree)
-            free(temp_tree)
+            free_tree(temp_tree)
         
         print(f"{iterations}\t trees of depth {depth}\t check: {check}")
     
     # Output result for the long-lived tree.
     print(f"long lived tree of depth {max_depth}\t check: {check_tree(long_lived_tree)}")
-    free(long_lived_tree)
+    free_tree(long_lived_tree)
