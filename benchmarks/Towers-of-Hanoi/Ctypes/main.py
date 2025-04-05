@@ -16,6 +16,7 @@ def run_hanoi(n):
 
     lib.towers_of_hanoi(n, source, auxiliary, target)
 
+
 if __name__ == "__main__":
     try:
         run_hanoi(3)
