@@ -13,6 +13,14 @@
     2. A disk can only be placed on an **empty rod** or a **larger disk**.
     3. No disk can be placed on top of a **smaller disk**.
 """
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from input import __default__
+import argparse
+
 
 def towers_of_hanoi(n: int, source: str, auxiliary: str, target: str) -> None:
     """
@@ -42,10 +50,25 @@ def towers_of_hanoi(n: int, source: str, auxiliary: str, target: str) -> None:
     # Move the n-1 disks from auxiliary to target, using source as buffer
     towers_of_hanoi(n - 1, auxiliary, source, target)
 
-
-if __name__ == "__main__":
+@measure_energy_to_csv(n=__default__["hanoi"]["test_n"], csv_filename="hanoi_cpython")
+def driver(n):
+    """
+    Driver function to run the Towers of Hanoi problem.
+    """
     try:
-        n = 3  # Number of disks
         towers_of_hanoi(n, "A", "B", "C")
     except ValueError as e:
         print(f"Error: {e}")
+
+if __name__ == "__main__":
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Solve the Towers of Hanoi problem.")
+    parser.add_argument(
+        "-n", "--num_disks", type=int, default=__default__["hanoi"]["n"], 
+        help=f"Number of disks (default: {__default__['hanoi']['n']})"
+    )
+    args = parser.parse_args()
+
+    # Get the number of disks from the arguments or use the default value
+    n = args.num_disks
+    driver(n)
