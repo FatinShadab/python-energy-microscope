@@ -26,6 +26,7 @@ Each module has its own setup guide (`setup_*.md`) explaining dependencies and i
 Each module contains a `measure_*.py` script that runs a benchmark and records power consumption. Example usage:
 
 ```sh
+sudo chmod -R a+r /sys/class/powercap/intel-rapl:*/energy_uj
 python measure_pyrapl.py <benchmark_script.py>
 ```
 
