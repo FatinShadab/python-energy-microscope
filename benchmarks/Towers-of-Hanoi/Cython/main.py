@@ -49,5 +49,6 @@ if __name__ == "__main__":
 
     # Get the number of disks from the arguments or use the default value
     n = args.num_disks
+    
     run_energy_benchmark(n)
     run_time_benchmark(n)
