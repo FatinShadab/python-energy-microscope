@@ -25,26 +25,12 @@ def spectral_norm(matrix: List[List[int]], iterations: int = 10) -> float:
     c_matrix = (ctypes.c_double * (n * n))(*flat_matrix)
     return lib.spectral_norm(c_matrix, n, iterations)
 
-@measure_energy_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_ctypes")
+@measure_energy_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_cpython")
 def run_energy_benchmark(matrix: List[List[int]], iterations=10) -> None:
-    """
-    Run the energy benchmark for Strassen's matrix multiplication.
-    
-    Args:
-        A (List[List[int]]): First matrix.
-        B (List[List[int]]): Second matrix.
-    """
     spectral_norm(matrix, iterations)
 
-@measure_time_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_ctypes")
+@measure_time_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_cpython")
 def run_time_benchmark(matrix: List[List[int]], iterations=10) -> None:
-    """
-    Run the time benchmark for Strassen's matrix multiplication.
-    
-    Args:
-        A (List[List[int]]): First matrix.
-        B (List[List[int]]): Second matrix.
-    """
     spectral_norm(matrix, iterations)
 
 

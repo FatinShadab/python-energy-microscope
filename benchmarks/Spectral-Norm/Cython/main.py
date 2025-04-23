@@ -9,28 +9,14 @@ from input import __default__
 
 from typing import List
 
-@measure_energy_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_cython")
+@measure_energy_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_cpython")
 def run_energy_benchmark(matrix: List[List[int]], iterations=10) -> None:
-    """
-    Computes the spectral norm of a matrix using the power method.
-
-    Args:
-    matrix (list of list of floats): The matrix whose spectral norm is to be calculated.
-    iterations (int): The number of iterations to run the power method (default is 10).
-    """
     spectral_norm(matrix, iterations)
 
-@measure_time_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_cython")
+@measure_time_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_cpython")
 def run_time_benchmark(matrix: List[List[int]], iterations=10) -> None:
-    """
-    Computes the spectral norm of a matrix using the power method.
-
-    Args:
-    matrix (list of list of floats): The matrix whose spectral norm is to be calculated.
-    iterations (int): The number of iterations to run the power method (default is 10).
-    """
     spectral_norm(matrix, iterations)
-
+    
 
 if __name__ == "__main__":
     A = __default__["spectral_norm"]["matrix"]
