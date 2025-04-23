@@ -17,4 +17,11 @@ __default__ = {
         'iterations': 1000,
         'matrix': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
     },
+    
+    'sieve': {
+        'test_n': 100,
+        'n': 10000000,
+    },
+    
+    
 }
