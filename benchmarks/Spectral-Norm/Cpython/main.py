@@ -9,7 +9,7 @@ from input import __default__
 import math
 from typing import List
 
-def multiply_matrix_vector(matrix, vector):
+def multiply_matrix_vector(matrix: List[List[int]], vector):
     """
     Multiplies a matrix with a vector.
 
@@ -25,7 +25,7 @@ def multiply_matrix_vector(matrix, vector):
     """
     return [sum(row[i] * vector[i] for i in range(len(vector))) for row in matrix]
 
-def spectral_norm(matrix, iterations=10):
+def spectral_norm(matrix: List[List[int]], iterations=10):
     """
     Computes the spectral norm (largest singular value) of a matrix using the power method.
 
@@ -74,7 +74,7 @@ def run_energy_benchmark(matrix: List[List[int]], iterations=10) -> None:
         B (List[List[int]]): Second matrix.
     """
     spectral_norm(matrix, iterations)
-    
+
 @measure_time_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_cpython")
 def run_time_benchmark(matrix: List[List[int]], iterations=10) -> None:
     """
