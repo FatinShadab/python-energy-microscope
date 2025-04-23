@@ -50,7 +50,7 @@ def towers_of_hanoi(n: int, source: str, auxiliary: str, target: str) -> None:
     # Move the n-1 disks from auxiliary to target, using source as buffer
     towers_of_hanoi(n - 1, auxiliary, source, target)
 
-@measure_energy_to_csv(n=__default__["hanoi"]["test_n"], csv_filename="hanoi_cython")
+@measure_energy_to_csv(n=__default__["hanoi"]["test_n"], csv_filename="hanoi_pypy")
 def run_energy_benchmark(n: int) -> None:
     """
     Driver function to run the Towers of Hanoi solution and measure energy consumption.
@@ -60,7 +60,7 @@ def run_energy_benchmark(n: int) -> None:
     """
     towers_of_hanoi(n, "A", "B", "C")
 
-@measure_time_to_csv(n=__default__["hanoi"]["test_n"], csv_filename="hanoi_cython")
+@measure_time_to_csv(n=__default__["hanoi"]["test_n"], csv_filename="hanoi_pypy")
 def run_time_benchmark(n: int) -> None:
     """
     Driver function to run the Towers of Hanoi solution and measure time consumption.
