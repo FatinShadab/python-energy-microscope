@@ -1,6 +1,15 @@
-import math
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
-def multiply_matrix_vector(matrix, vector):
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
+import math
+from typing import List
+
+def multiply_matrix_vector(matrix: List[List[int]], vector):
     """
     Multiplies a matrix with a vector.
 
@@ -16,7 +25,7 @@ def multiply_matrix_vector(matrix, vector):
     """
     return [sum(row[i] * vector[i] for i in range(len(vector))) for row in matrix]
 
-def spectral_norm(matrix, iterations=10):
+def spectral_norm(matrix: List[List[int]], iterations=10):
     """
     Computes the spectral norm (largest singular value) of a matrix using the power method.
 
@@ -55,10 +64,34 @@ def spectral_norm(matrix, iterations=10):
     # Step 5: Calculate the spectral norm (largest singular value)
     return math.sqrt(sum(multiply_matrix_vector(matrix, u)[i] * u[i] for i in range(n)))
 
+@measure_energy_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_pypy")
+def run_energy_benchmark(matrix: List[List[int]], iterations=10) -> None:
+    """
+    Run the energy benchmark for Strassen's matrix multiplication.
+    
+    Args:
+        A (List[List[int]]): First matrix.
+        B (List[List[int]]): Second matrix.
+    """
+    spectral_norm(matrix, iterations)
+
+@measure_time_to_csv(n=__default__["strassen"]["test_n"], csv_filename="spectral_norm_pypy")
+def run_time_benchmark(matrix: List[List[int]], iterations=10) -> None:
+    """
+    Run the time benchmark for Strassen's matrix multiplication.
+    
+    Args:
+        A (List[List[int]]): First matrix.
+        B (List[List[int]]): Second matrix.
+    """
+    spectral_norm(matrix, iterations)
+
 
 if __name__ == "__main__":
     # Example matrix
-    A = [[1, 2], [3, 4]]
+    A = __default__["spectral-norm"]["matrix"]
+    itr = __default__["spectral-norm"]["iterations"]
 
-    # Compute spectral norm
-    print("Spectral Norm:", spectral_norm(A))
+    # Run the benchmarks
+    run_energy_benchmark(A, itr)
+    run_time_benchmark(A, itr)
