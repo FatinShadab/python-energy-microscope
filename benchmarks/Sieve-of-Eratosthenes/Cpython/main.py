@@ -1,3 +1,11 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
 from typing import List
 
 
@@ -26,8 +34,27 @@ class PrimeSieve:
         primes = [i for i, is_prime in enumerate(sieve) if is_prime]
         return primes
 
-
-if __name__ == "__main__":
-    n = 100000  # Example limit
+def main(n: int):
+    """
+    Main function to execute the sieve algorithm and print the results.
+    
+    Args:
+        n (int): The upper limit to find primes up to.
+    """
     primes = PrimeSieve.sieve(n)
     print(f"Primes up to {n}: {primes}")
+
+@measure_energy_to_csv(n=__default__["sieve"]["test_n"], csv_filename="sieve_cpython")
+def run_energy_benchmark(n: int) -> None:
+    main(n)
+
+@measure_time_to_csv(n=__default__["sieve"]["test_n"], csv_filename="sieve_cpython")
+def run_time_benchmark(n: int) -> None:
+    main(n)
+
+
+if __name__ == "__main__":
+    n = __default__["sieve"]["n"]
+    
+    run_energy_benchmark(n)
+    run_time_benchmark(n)
