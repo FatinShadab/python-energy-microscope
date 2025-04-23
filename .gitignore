@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+**/energy_benchmark/
+**/time_benchmark/
+
 # C extensions
 *.so
 
