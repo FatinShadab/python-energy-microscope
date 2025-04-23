@@ -10,5 +10,11 @@ __default__ = {
         'test_n': 100,
         'A': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
         'B': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
-    }
+    },
+    
+    'spectral-norm': {
+        'test_n': 100,
+        'iterations': 1000,
+        'matrix': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
+    },
 }
