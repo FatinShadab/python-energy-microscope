@@ -99,11 +99,11 @@ def driver(num_samples: int, num_features: int, k: int):
     print("Regression Prediction:", prediction_regression)
     # Note: The above example generates random data for demonstration purposes.
     
-@measure_energy_to_csv(n=__default__["knn"]["test_n"], csv_filename="binary_trees_cython")
+@measure_energy_to_csv(n=__default__["knn"]["test_n"], csv_filename="knn_cpython")
 def run_energy_benchmark(num_samples: int, num_features: int, k: int) -> None:
     driver(num_samples, num_features, k)
 
-@measure_time_to_csv(n=__default__["knn"]["test_n"], csv_filename="binary_trees_cython")
+@measure_time_to_csv(n=__default__["knn"]["test_n"], csv_filename="knn_cpython")
 def run_time_benchmark(num_samples: int, num_features: int, k: int) -> None:
     driver(num_samples, num_features, k)
     
