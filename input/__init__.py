@@ -38,5 +38,11 @@ __default__ = {
         'depth': 18,
     },
     
+    'knn': {
+        'test_n': 100,
+        'num_samples': 10000,  # Number of samples
+        'num_features': 100,   # Number of features
+        'k': 5,               # Number of neighbors
+    },
     
 }
