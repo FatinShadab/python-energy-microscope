@@ -1,7 +1,12 @@
-import ctypes
-import time
-import os
 import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
+import ctypes
 
 # Load the shared library
 if os.name == "nt":
@@ -53,10 +58,17 @@ def run_binary_trees(n: int):
     print(f"long lived tree of depth {max_depth}\t check: {lib.check_tree(long_lived_tree)}")
     lib.free_tree(long_lived_tree)
 
+@measure_energy_to_csv(n=__default__["binary-trees"]["test_n"], csv_filename="binary_trees_ctypes")
+def run_energy_benchmark(n: int) -> None:
+    run_binary_trees(n)
+
+@measure_time_to_csv(n=__default__["binary-trees"]["test_n"], csv_filename="binary_trees_ctypes")
+def run_time_benchmark(n: int) -> None:
+    run_binary_trees(n)
+
 
 if __name__ == "__main__":
-    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
-    start = time.time()
-    run_binary_trees(n)
-    end = time.time()
-    print(f"Execution time for n={n}: {end - start:.6f} seconds")
+    n = __default__["binary-trees"]["depth"]
+    
+    run_energy_benchmark(n)
+    run_time_benchmark(n)
