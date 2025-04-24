@@ -6,7 +6,6 @@ from energy_module.decorator import measure_energy_to_csv
 from time_modules.decorator import measure_time_to_csv
 from input import __default__
 
-import sys
 
 class TreeNode:
     """
