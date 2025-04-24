@@ -27,4 +27,10 @@ __default__ = {
         'test_n': 100,
         'n': 18,
     },
+    
+    'reverse_complement': {
+        'test_n': 100,
+        'dna_sequence': "ATGC" * 10000000,  # Example DNA sequence
+    },
+    
 }
