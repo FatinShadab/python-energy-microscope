@@ -1,12 +1,24 @@
-import timeit
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
 
 import raw  # Import the compiled Cython module
 
-def test():
-    # Test the `main` function with a specific depth
-    n = 20  # Example depth value
-    raw.main(n)  # Call the Cython function
+@measure_energy_to_csv(n=__default__["binary-trees"]["test_n"], csv_filename="binary_trees_cython")
+def run_energy_benchmark(n: int) -> None:
+    raw.main(n)
+
+@measure_time_to_csv(n=__default__["binary-trees"]["test_n"], csv_filename="binary_trees_cython")
+def run_time_benchmark(n: int) -> None:
+    raw.main(n)
+
 
 if __name__ == "__main__":
-    runtime = timeit.timeit("test()", globals=globals(), number=1)
-    print(f"Runtime: {runtime} seconds")
+    n = __default__["binary-trees"]["depth"]
+    
+    run_energy_benchmark(n)
+    run_time_benchmark(n)
