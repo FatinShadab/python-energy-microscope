@@ -45,4 +45,8 @@ __default__ = {
         'k': 5,               # Number of neighbors
     },
     
+    'pi_digits': {
+        'test_n': 100,
+        'iterations': 1000,  # Adjust for precision
+    },
 }
