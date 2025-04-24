@@ -33,4 +33,10 @@ __default__ = {
         'dna_sequence': "ATGC" * 10000000,  # Example DNA sequence
     },
     
+    'binary-trees': {
+        'test_n': 100,
+        'depth': 18,
+    },
+    
+    
 }
