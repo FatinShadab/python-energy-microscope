@@ -49,4 +49,11 @@ __default__ = {
         'test_n': 100,
         'iterations': 1000,  # Adjust for precision
     },
+    
+    'K_Nucleotide': {
+        'test_n': 100,
+        'k': 6,  # Length of the
+        'nucleotide_sequence_file': '/home/eaegon/Documents/GITHUB/python-energy-microscope/benchmarks/K-Nucleotide/dna.txt',  # Path to the input file 
+    },
+    
 }
