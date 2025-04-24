@@ -1,3 +1,11 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
 """
 Solving Approach in the Code ->
 --------------------------------
@@ -93,13 +101,31 @@ def n_queens(n):
     solve_n_queens(board, 0, n, solutions)
     return solutions
 
-# Example usage
-if __name__ == "__main__":
+def main(n):
     """
-    Example execution of the N-Queens solver.
+    Main function to execute the N-Queens solver.
+    
+    Args:
+        n (int): The size of the board.
     """
-    N = 8  # Change N for different board sizes
-    solutions = n_queens(N)
-    print(f"Total solutions for {N}-Queens: {len(solutions)}")
+    solutions = n_queens(n)
+    print(f"Total solutions for {n}-Queens: {len(solutions)}")
     for sol in solutions:
         print_solution(sol)
+        
+@measure_energy_to_csv(n=__default__["n-queens"]["test_n"], csv_filename="n_queens_pycompiler")
+def run_energy_benchmark(n: int) -> None:
+    main(n)
+
+@measure_time_to_csv(n=__default__["n-queens"]["test_n"], csv_filename="n_queens_pycompiler")
+def run_time_benchmark(n: int) -> None:
+    main(n)
+
+# Example usage
+if __name__ == "__main__":
+    N = __default__["n-queens"]["n"]
+    
+    # Run the energy benchmark
+    run_energy_benchmark(N)
+    # Run the time benchmark
+    run_time_benchmark(N)
