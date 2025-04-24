@@ -1,4 +1,12 @@
 import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
+import sys
 from collections import defaultdict
 from typing import Dict
 
@@ -49,18 +57,22 @@ def print_kmer_frequencies(kmers: Dict[str, int]) -> None:
         print(f"{kmer}: {freq}")
 
 def main() -> None:
-    """Main function to execute the K-Nucleotide frequency analysis."""
-    if len(sys.argv) < 3:
-        print("Usage: python k_nucleotide.py <file_path> <k>")
-        return
-    
-    file_path: str = sys.argv[1]
-    k: int = int(sys.argv[2])
+    """Main function to execute the K-Nucleotide frequency analysis."""    
+    file_path: str = __default__["K_Nucleotide"]["nucleotide_sequence_file"]
+    k: int = __default__["K_Nucleotide"]["k"]
     
     sequence: str = read_sequence(file_path)
     kmers: Dict[str, int] = count_kmers(sequence, k)
     print_kmer_frequencies(kmers)
 
+@measure_energy_to_csv(n=__default__["K_Nucleotide"]["test_n"], csv_filename="K_Nucleotide_pycompile")
+def run_energy_benchmark() -> None:
+    main()
+
+@measure_time_to_csv(n=__default__["K_Nucleotide"]["test_n"], csv_filename="K_Nucleotide_pycompile")
+def run_time_benchmark() -> None:
+    main()
 
 if __name__ == "__main__":
-    main()
+    run_energy_benchmark()
+    run_time_benchmark()
