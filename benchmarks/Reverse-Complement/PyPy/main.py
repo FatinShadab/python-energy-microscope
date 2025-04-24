@@ -1,3 +1,13 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
+from typing import List
+
 def reverse_complement(dna_sequence: str) -> str:
     """
     Computes the reverse complement of a given DNA sequence.
@@ -27,11 +37,19 @@ def reverse_complement(dna_sequence: str) -> str:
     # Generate reverse complement using list comprehension (efficient in CPython)
     return "".join(complement_map[base] for base in reversed(dna_sequence))
 
+@measure_energy_to_csv(n=__default__["reverse_complement"]["test_n"], csv_filename="reverse_complement_pypy")
+def run_energy_benchmark(dna_sequence: str) -> None:
+    reverse_complement(dna_sequence)
+
+@measure_time_to_csv(n=__default__["reverse_complement"]["test_n"], csv_filename="reverse_complement_pypy")
+def run_time_benchmark(dna_sequence: str) -> None:
+    reverse_complement(dna_sequence)
+
 
 if __name__ == "__main__":
     # Example DNA sequence
-    dna = "ATGC"
+    dna = __default__["reverse_complement"]["dna_sequence"]
     
-    # Print results
-    print("Original DNA Sequence: ", dna)
-    print("Reverse Complement: ", reverse_complement(dna))
+    # Run benchmarks
+    run_energy_benchmark(dna)
+    run_time_benchmark(dna)
