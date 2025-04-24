@@ -1,6 +1,12 @@
 import sys
-import timeit
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
+import sys
 
 class TreeNode:
     """
@@ -88,12 +94,17 @@ def main(n: int) -> None:
     # Output result for the long-lived tree
     print(f"long lived tree of depth {max_depth}\t check: {check_tree(long_lived_tree)}")
 
+@measure_energy_to_csv(n=__default__["binary-trees"]["test_n"], csv_filename="binary_trees_pycompile")
+def run_energy_benchmark(n: int) -> None:
+    main(n)
+
+@measure_time_to_csv(n=__default__["binary-trees"]["test_n"], csv_filename="binary_trees_pycompile")
+def run_time_benchmark(n: int) -> None:
+    main(n)
+
 
 if __name__ == "__main__":
-    """
-    Main entry point for running the script. This expects a command-line argument
-    for the depth of the trees (default is 10 if no argument is provided).
-    """
-    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
-    runtime = timeit.timeit(lambda: main(n), number=1)
-    print(f"Execution time for n={n}: {runtime:.6f} seconds")
+    n = __default__["binary-trees"]["depth"]
+    
+    run_energy_benchmark(n)
+    run_time_benchmark(n)
