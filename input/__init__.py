@@ -2,7 +2,7 @@ import random
 
 __default__ = {
     'hanoi': {
-        'test_n': 15,
+        'test_n': 100,
         'n': 18,
     },
     
@@ -60,6 +60,14 @@ __default__ = {
         "test_n": 100,
         "n": 10,  # You can change this value to test with different values of n
         "perm": list(range(1, 11)),  # Initialize the first permutation must be in range [1, n]
+    },
+    
+    "fasta": {
+        "test_n": 100,
+        "k": 8,
+        "query_sequence": "ACGTAGCTAGCTAGTACGATCGATCGTACGATCGATCGTAGCTAGCTGACGATCGATCGTACGATCGTAGCTAGCATCG",
+        "target_sequence": "GATCGATCGTAGCTAGCATCGATCGTACGATCGATCGTAGCTAGCTGACGATCGATCGTACGATCGTAGCTAGCATCG"
     }
+
     
 }
