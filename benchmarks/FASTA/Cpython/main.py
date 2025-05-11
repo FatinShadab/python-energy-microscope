@@ -1,4 +1,12 @@
 from typing import List, Tuple
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
 
 # Function to generate k-tuples from a sequence
 def generate_k_tuples(sequence: str, k: int) -> List[str]:
@@ -118,12 +126,11 @@ def fasta_alignment(query: str, target: str, k: int, match: int = 1, mismatch: i
 
     return best_score, best_alignment, best_aligned_query, best_aligned_target
 
-# Example usage
-if __name__ == "__main__":
-    # Sample input sequences
-    query_sequence = "AGCTGACGTAG"
-    target_sequence = "CGTAGAGCTGAC"
-    k = 4  # Length of k-tuple
+# driver function to run the FASTA alignment
+def driver(k: int, query_sequence: str, target_sequence: str) -> None:
+    """
+    Main driver function to run the FASTA alignment.
+    """
 
     # Perform FASTA sequence alignment
     score, alignment, aligned_query, aligned_target = fasta_alignment(query_sequence, target_sequence, k)
@@ -134,3 +141,25 @@ if __name__ == "__main__":
     print("\nAligned Sequences:")
     print(f"Query:   {aligned_query}")
     print(f"Target:  {aligned_target}")
+    
+# Benchmarking functions for energy
+@measure_energy_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_cpython")
+def run_energy_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
+    driver(k, query_sequence, target_sequence)
+
+# Benchmarking function for time
+@measure_time_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_cpython")
+def run_time_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
+    driver(k, query_sequence, target_sequence)
+
+# Example usage
+if __name__ == "__main__":
+    k = __default__["fasta"]["k"]
+    query_sequence = __default__["fasta"]["query_sequence"]
+    target_sequence = __default__["fasta"]["target_sequence"]
+
+    # Run the energy benchmark
+    run_energy_benchmark(k, query_sequence, target_sequence)
+
+    # Run the time benchmark
+    run_time_benchmark(k, query_sequence, target_sequence)
