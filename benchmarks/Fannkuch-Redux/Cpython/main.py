@@ -1,4 +1,11 @@
 from typing import List, Tuple
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
 
 
 def count_flips(perm: List[int]) -> int:
@@ -69,7 +76,7 @@ def fannkuch_redux(n: int) -> Tuple[int, int]:
              - count_max_flips is the number of permutations that required max_flips.
     """
     # Initialize the first permutation
-    perm = list(range(1, n + 1))
+    perm = __default__["fannkuch_redux"]["perm"]
     
     max_flips = 0
     count_max_flips = 0
@@ -92,9 +99,33 @@ def fannkuch_redux(n: int) -> Tuple[int, int]:
     return max_flips, count_max_flips
 
 
-# Example usage
-if __name__ == "__main__":
-    n = 7  # You can change this value to test with different values of n
+def driver(n: int) -> Tuple[int, int]:
+    """
+    Driver function to call the fannkuch_redux function.
+    
+    This function is used to measure energy and time for the fannkuch_redux function.
+
+    :param n: The number of elements in the list to permute.
+    :return: A tuple (max_flips, count_max_flips) where:
+             - max_flips is the maximum number of flips encountered,
+             - count_max_flips is the number of permutations that required max_flips.
+    """
     max_flips, count_max_flips = fannkuch_redux(n)
     print(f"Max flips: {max_flips}")
     print(f"Count of max flips: {count_max_flips}")
+    
+    
+@measure_energy_to_csv(n=__default__["fannkuch_redux"]["test_n"], csv_filename="fannkuch_redux_cpython")
+def run_energy_benchmark(n: int) -> None:
+    driver(n)
+
+@measure_time_to_csv(n=__default__["fannkuch_redux"]["test_n"], csv_filename="fannkuch_redux_cpython")
+def run_time_benchmark(n: int) -> None:
+    driver(n)
+
+
+# Example usage
+if __name__ == "__main__":
+    n = __default__["fannkuch_redux"]["n"]
+    run_energy_benchmark(n)
+    run_time_benchmark(n)
