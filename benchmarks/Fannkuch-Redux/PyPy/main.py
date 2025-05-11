@@ -115,11 +115,11 @@ def driver(n: int) -> Tuple[int, int]:
     print(f"Count of max flips: {count_max_flips}")
     
     
-@measure_energy_to_csv(n=__default__["fannkuch_redux"]["test_n"], csv_filename="fannkuch_redux_cpython")
+@measure_energy_to_csv(n=__default__["fannkuch_redux"]["test_n"], csv_filename="fannkuch_redux_pypy")
 def run_energy_benchmark(n: int) -> None:
     driver(n)
 
-@measure_time_to_csv(n=__default__["fannkuch_redux"]["test_n"], csv_filename="fannkuch_redux_cpython")
+@measure_time_to_csv(n=__default__["fannkuch_redux"]["test_n"], csv_filename="fannkuch_redux_pypy")
 def run_time_benchmark(n: int) -> None:
     driver(n)
 
