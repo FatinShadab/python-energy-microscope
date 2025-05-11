@@ -12,12 +12,12 @@ def count_flips(perm: List[int]) -> int:
     :return: The number of flips required to sort the permutation.
     """
     flips = 0
+    perm_copy = perm.copy()
     while True:
-        first = perm[0]
+        first = perm_copy[0]
         if first == 1:
             return flips
-        # Reverse the portion of the list from index 1 to the position of 'first'
-        perm[1:first] = perm[1:first][::-1]
+        perm_copy[:first] = perm_copy[:first][::-1]
         flips += 1
 
 
