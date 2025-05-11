@@ -56,4 +56,10 @@ __default__ = {
         'nucleotide_sequence_file': '/home/eaegon/Documents/GITHUB/python-energy-microscope/benchmarks/K-Nucleotide/dna.txt',  # Path to the input file 
     },
     
+    "fannkuch_redux": {
+        "test_n": 100,
+        "n": 10,  # You can change this value to test with different values of n
+        "perm": list(range(1, 11)),  # Initialize the first permutation must be in range [1, n]
+    }
+    
 }
