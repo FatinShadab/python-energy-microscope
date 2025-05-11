@@ -1,82 +1,99 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define MAX_LEN 1000
 
-int max(int a, int b, int c, int d) {
-    int max_val = a;
-    if (b > max_val) max_val = b;
-    if (c > max_val) max_val = c;
-    if (d > max_val) max_val = d;
-    return max_val;
+void generate_k_tuples(const char *seq, int k, char tuples[][MAX_LEN], int *positions, int *count) {
+    int len = strlen(seq);
+    *count = 0;
+    for (int i = 0; i <= len - k; i++) {
+        strncpy(tuples[*count], seq + i, k);
+        tuples[*count][k] = '\0';
+        positions[*count] = i;
+        (*count)++;
+    }
 }
 
-int extend_alignment(
-    const char *query,
-    const char *target,
-    int match,
-    int mismatch,
-    int gap,
-    char *aligned_query,
-    char *aligned_target
-) {
-    int n = strlen(query);
-    int m = strlen(target);
-    int dp[MAX_LEN][MAX_LEN] = {0};
-    int max_score = 0, max_i = 0, max_j = 0;
+int extend_alignment(const char *query, const char *target, int match, int mismatch, int gap,
+                     char *aligned_query, char *aligned_target) {
+    int len_q = strlen(query);
+    int len_t = strlen(target);
+    int max_len = len_q > len_t ? len_q : len_t;
+    
+    int score = 0, i = 0;
+    int a = 0;
 
-    for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= m; ++j) {
-            int score = (query[i - 1] == target[j - 1]) ? match : mismatch;
-            dp[i][j] = max(
-                0,
-                dp[i - 1][j - 1] + score,
-                dp[i - 1][j] + gap,
-                dp[i][j - 1] + gap
-            );
-            if (dp[i][j] > max_score) {
-                max_score = dp[i][j];
-                max_i = i;
-                max_j = j;
+    while (query[i] != '\0' && target[i] != '\0') {
+        if (query[i] == target[i]) {
+            aligned_query[a] = query[i];
+            aligned_target[a] = target[i];
+            score += match;
+        } else {
+            aligned_query[a] = query[i];
+            aligned_target[a] = target[i];
+            score += mismatch;
+        }
+        i++;
+        a++;
+    }
+
+    // Remaining part: penalize gaps
+    while (query[i] != '\0') {
+        aligned_query[a] = query[i];
+        aligned_target[a] = '-';
+        score += gap;
+        i++;
+        a++;
+    }
+
+    while (target[i] != '\0') {
+        aligned_query[a] = '-';
+        aligned_target[a] = target[i];
+        score += gap;
+        i++;
+        a++;
+    }
+
+    aligned_query[a] = '\0';
+    aligned_target[a] = '\0';
+
+    return score;
+}
+
+int fasta_alignment(const char *query, const char *target, int k,
+                    int match, int mismatch, int gap,
+                    char *best_aligned_query, char *best_aligned_target,
+                    int *start_q, int *start_t) {
+    char query_k_tuples[MAX_LEN][MAX_LEN];
+    char target_k_tuples[MAX_LEN][MAX_LEN];
+    int query_pos[MAX_LEN], target_pos[MAX_LEN];
+    int query_count = 0, target_count = 0;
+
+    generate_k_tuples(query, k, query_k_tuples, query_pos, &query_count);
+    generate_k_tuples(target, k, target_k_tuples, target_pos, &target_count);
+
+    int best_score = -999999;
+
+    for (int i = 0; i < query_count; i++) {
+        for (int j = 0; j < target_count; j++) {
+            if (strcmp(query_k_tuples[i], target_k_tuples[j]) == 0) {
+                char aligned_q[MAX_LEN];
+                char aligned_t[MAX_LEN];
+
+                int score = extend_alignment(query + query_pos[i], target + target_pos[j],
+                                             match, mismatch, gap, aligned_q, aligned_t);
+
+                if (score > best_score) {
+                    best_score = score;
+                    strcpy(best_aligned_query, aligned_q);
+                    strcpy(best_aligned_target, aligned_t);
+                    *start_q = query_pos[i];
+                    *start_t = target_pos[j];
+                }
             }
         }
     }
 
-    // Traceback
-    int i = max_i, j = max_j;
-    int ai = 0;
-    while (i > 0 && j > 0 && dp[i][j] > 0) {
-        int score = (query[i - 1] == target[j - 1]) ? match : mismatch;
-        if (dp[i][j] == dp[i - 1][j - 1] + score) {
-            aligned_query[ai] = query[i - 1];
-            aligned_target[ai] = target[j - 1];
-            i--; j--;
-        } else if (dp[i][j] == dp[i - 1][j] + gap) {
-            aligned_query[ai] = query[i - 1];
-            aligned_target[ai] = '-';
-            i--;
-        } else {
-            aligned_query[ai] = '-';
-            aligned_target[ai] = target[j - 1];
-            j--;
-        }
-        ai++;
-    }
-
-    aligned_query[ai] = '\0';
-    aligned_target[ai] = '\0';
-
-    // Reverse the aligned strings
-    for (int k = 0; k < ai / 2; ++k) {
-        char temp = aligned_query[k];
-        aligned_query[k] = aligned_query[ai - 1 - k];
-        aligned_query[ai - 1 - k] = temp;
-
-        temp = aligned_target[k];
-        aligned_target[k] = aligned_target[ai - 1 - k];
-        aligned_target[ai - 1 - k] = temp;
-    }
-
-    return max_score;
+    return best_score;
 }
