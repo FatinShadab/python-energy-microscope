@@ -2,6 +2,14 @@
 import numpy as np
 from raw import Body, simulate_nbody
 from typing import List
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
 
 def print_trajectories(positions: List[List[List[float]]], num_bodies: int) -> None:
     """

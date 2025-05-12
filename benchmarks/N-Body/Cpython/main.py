@@ -1,5 +1,13 @@
 import math
 from typing import List
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+
+from energy_module.decorator import measure_energy_to_csv
+from time_modules.decorator import measure_time_to_csv
+from input import __default__
+
 
 # Constants
 G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
