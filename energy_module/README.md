@@ -27,7 +27,7 @@ Each module contains a `measure_*.py` script that runs a benchmark and records p
 
 ```sh
 sudo chmod -R a+r /sys/class/powercap/intel-rapl:*/energy_uj
-python measure_pyrapl.py <benchmark_script.py>
+nice -n -20 ionice -c2 -n0 python measure_pyrapl.py <benchmark_script.py>
 ```
 
 ## Output
