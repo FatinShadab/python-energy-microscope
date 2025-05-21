@@ -86,14 +86,42 @@ def render_mandelbrot(data: list[list[int]], max_iter: int) -> None:
     for row in data:
         print("".join(chars[int(i / max_iter * scale)] for i in row))  # Map values to ASCII chars
 
-if __name__ == "__main__":
-    # Define grid size and Mandelbrot range
-    width, height = 80, 40  # Output size in characters
-    max_iter = 100  # Maximum iterations per point
-    x_min, x_max, y_min, y_max = -2.0, 1.0, -1.5, 1.5  # Mandelbrot coordinate range
-
+def driver(width: int, height: int, max_iter: int, 
+                         x_min: float, x_max: float, y_min: float, y_max: float) -> None:
+    """
+        Driver function to generate and render the Mandelbrot set.
+    """
+    
     # Generate Mandelbrot data
     mandelbrot_data = generate_mandelbrot(width, height, max_iter, x_min, x_max, y_min, y_max)
 
     # Render Mandelbrot fractal as ASCII
     render_mandelbrot(mandelbrot_data, max_iter)
+
+# Measure energy consumption and time taken for the Mandelbrot set generation
+@measure_energy_to_csv(n=__default__["mandelbrot"]["test_n"], csv_filename="mandelbrot_cpython")
+def run_energy_benchmark(width: int, height: int, max_iter: int, 
+                         x_min: float, x_max: float, y_min: float, y_max: float) -> None:
+    driver(width, height, max_iter, x_min, x_max, y_min, y_max)
+
+# Measure time taken for the Mandelbrot set generation
+@measure_time_to_csv(n=__default__["mandelbrot"]["test_n"], csv_filename="mandelbrot_cpython")
+def run_time_benchmark(width: int, height: int, max_iter: int, 
+                         x_min: float, x_max: float, y_min: float, y_max: float) -> None:
+    driver(width, height, max_iter, x_min, x_max, y_min, y_max)
+
+
+if __name__ == "__main__":
+    # Define grid size and Mandelbrot range
+    width, height = __default__["mandelbrot"]["width"], __default__["mandelbrot"]["height"]
+    max_iter = __default__["mandelbrot"]["max_iter"]  # Maximum iterations per point
+    x_min, x_max, y_min, y_max = (
+        __default__["mandelbrot"]["x_min"],
+        __default__["mandelbrot"]["x_max"],
+        __default__["mandelbrot"]["y_min"],
+        __default__["mandelbrot"]["y_max"]
+    )
+    
+    # Run energy and time benchmarks
+    run_energy_benchmark(width, height, max_iter, x_min, x_max, y_min, y_max)
+    run_time_benchmark(width, height, max_iter, x_min, x_max, y_min, y_max)
