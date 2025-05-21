@@ -80,5 +80,18 @@ __default__ = {
         "y_max": 1.5
     },
 
-    
+    "nbody": {
+        "test_n": 100,
+        "num_bodies": 100,
+        "time_steps": 1000,
+        "G": 6.67430e-11,  # Gravitational constant
+        "dt": 1000,  # Time step
+        "bodies": [
+            {
+                "mass": random.uniform(1e24, 1e30),
+                "position": [random.uniform(-1e11, 1e11) for _ in range(3)],
+                "velocity": [random.uniform(-1e4, 1e4) for _ in range(3)]
+            } for _ in range(100)
+        ]
+    }
 }
