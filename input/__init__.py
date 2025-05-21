@@ -2,75 +2,75 @@ import random
 
 __default__ = {
     'hanoi': {
-        'test_n': 100,
+        'test_n': 50,
         'n': 18,
     },
-    
+
     'strassen': {
-        'test_n': 100,
+        'test_n': 50,
         'A': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
         'B': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
     },
-    
+
     'spectral-norm': {
-        'test_n': 100,
+        'test_n': 50,
         'iterations': 1000,
         'matrix': [[random.randint(0, 10) for _ in range(128)] for _ in range(128)],
     },
-    
+
     'sieve': {
-        'test_n': 100,
-        'n': 10000000,
+        'test_n': 50,
+        'n': 10_000_000,
     },
-    
+
     'n-queens': {
-        'test_n': 100,
+        'test_n': 50,
         'n': 18,
     },
-    
+
     'reverse_complement': {
-        'test_n': 100,
-        'dna_sequence': "ATGC" * 10000000,  # Example DNA sequence
+        'test_n': 50,
+        'dna_sequence': "ATGC" * 10_000_000,
     },
-    
+
     'binary-trees': {
-        'test_n': 100,
+        'test_n': 50,
         'depth': 18,
     },
-    
+
     'knn': {
-        'test_n': 100,
-        'num_samples': 10000,  # Number of samples
-        'num_features': 100,   # Number of features
-        'k': 5,               # Number of neighbors
+        'test_n': 50,
+        'num_samples': 10_000,
+        'num_features': 100,
+        'k': 5,
     },
-    
+
     'pi_digits': {
-        'test_n': 100,
-        'iterations': 1000,  # Adjust for precision
+        'test_n': 50,
+        'iterations': 1000,
     },
-    
+
     'K_Nucleotide': {
-        'test_n': 100,
-        'k': 6,  # Length of the
-        'nucleotide_sequence_file': '/home/eaegon/Documents/GITHUB/python-energy-microscope/benchmarks/K-Nucleotide/dna.txt',  # Path to the input file 
+        'test_n': 50,
+        'k': 6,
+        'nucleotide_sequence_file': '/home/eaegon/Documents/GITHUB/python-energy-microscope/benchmarks/K-Nucleotide/dna.txt',
     },
-    
+
     "fannkuch_redux": {
-        "test_n": 100,
-        "n": 10,  # You can change this value to test with different values of n
-        "perm": list(range(1, 11)),  # Initialize the first permutation must be in range [1, n]
+        "test_n": 50,
+        "n": 10,
+        "perm": list(range(1, 11)),
     },
-    
+
     "fasta": {
-        "test_n": 100,
+        "test_n": 50,
         "k": 8,
         "query_sequence": "ACGTAGCTAGCTAGTACGATCGATCGTACGATCGATCGTAGCTAGCTGACGATCGATCGTACGATCGTAGCTAGCATCG",
         "target_sequence": "GATCGATCGTAGCTAGCATCGATCGTACGATCGATCGTAGCTAGCTGACGATCGATCGTACGATCGTAGCTAGCATCG"
     },
-    
+
     "mandelbrot": {
-        "test_n": 100,
+        "test_n": 50,
         "width": 100,
         "height": 100,
         "max_iter": 100,
@@ -81,11 +81,11 @@ __default__ = {
     },
 
     "nbody": {
-        "test_n": 100,
+        "test_n": 50,
         "num_bodies": 100,
         "time_steps": 1000,
-        "G": 6.67430e-11,  # Gravitational constant
-        "dt": 1000,  # Time step
+        "G": 6.67430e-11,
+        "dt": 1000,
         "bodies": [
             {
                 "mass": random.uniform(1e24, 1e30),
@@ -94,9 +94,9 @@ __default__ = {
             } for _ in range(100)
         ]
     },
-    
+
     "regex_redux": {
-        "file_path": "input_fasta.txt",  # input file with FASTA data
-        "test_n": 100  # number of runs for benchmarking
+        "file_path": "input_fasta.txt",
+        "test_n": 50
     }
 }
