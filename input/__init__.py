@@ -93,5 +93,10 @@ __default__ = {
                 "velocity": [random.uniform(-1e4, 1e4) for _ in range(3)]
             } for _ in range(100)
         ]
+    },
+    
+    "regex_redux": {
+        "file_path": "input_fasta.txt",  # input file with FASTA data
+        "test_n": 100  # number of runs for benchmarking
     }
 }
