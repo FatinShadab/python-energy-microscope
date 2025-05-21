@@ -26,6 +26,9 @@ def get_system_info(result_file_path: str):
         "bluetooth": "disabled",
         "onACPower": True,
         "brightness": 100,
+        "vlume": 0,
+        "microphone": "disabled",
+        "camera": "disabled",
     }
 
 def measure_energy_to_csv(n: int, csv_filename: str, folder_name: str = "energy_benchmark"):
