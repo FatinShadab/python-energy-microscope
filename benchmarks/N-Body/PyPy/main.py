@@ -10,7 +10,7 @@ from input import __default__
 
 
 # Constants
-G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+G = __default__["nbody"]["G"]  # Gravitational constant (m^3 kg^-1 s^-2)
 
 class Body:
     """
@@ -139,28 +139,42 @@ def print_trajectories(positions: List[List[List[float]]], num_bodies: int) -> N
             print(f"Step {step + 1}: Position = {pos}")
         print()
 
-
-def main() -> None:
+def driver(boides: List[Body], dt: float, num_steps: int) -> None:
     """
-    Initializes the bodies, runs the N-Body simulation, and prints the results.
+        Initializes the bodies, runs the N-Body simulation, and prints the results.
     """
-    # Initial conditions: mass (kg), position (m), velocity (m/s)
-    body1 = Body(5.972e24, [0, 0, 0], [0, 0, 0])  # Earth-like body
-    body2 = Body(7.348e22, [384400000, 0, 0], [0, 1022, 0])  # Moon-like body
-
-    # Create a list of bodies
-    bodies = [body1, body2]
-    
-    # Simulation parameters
-    dt = 1000  # Time step in seconds
-    num_steps = 10000  # Number of steps to simulate
-
     # Run the simulation
     positions = simulate_nbody(bodies, dt, num_steps)
     
     # Output the results
     print_trajectories(positions, len(bodies))
+    
+@measure_time_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_pypy")
+def run_time_benchmark(boides: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Runs the N-Body simulation and measures the time taken.
+    """
+    driver(bodies, dt, num_steps)
+
+@measure_energy_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_pypy")
+def run_energy_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Runs the N-Body simulation and measures the energy consumed.
+    """
+    driver(bodies, dt, num_steps)
 
 
 if __name__ == "__main__":
-    main()
+    bodies = [
+        Body(body["mass"], body["position"], body["velocity"])
+        for body in __default__["nbody"]["bodies"]
+    ]
+
+    # Run the simulation
+    dt = __default__["nbody"]["dt"]
+    num_steps = __default__["nbody"]["time_steps"]
+
+    # Run the energy benchmark
+    run_energy_benchmark(bodies, dt, num_steps)
+    # Run the time benchmark
+    run_time_benchmark(bodies, dt, num_steps)
