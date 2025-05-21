@@ -20,7 +20,12 @@ def get_system_info(result_file_path: str):
         "RAM_GB": round(psutil.virtual_memory().total / (1024 ** 3), 2),
         "OS": f"{platform.system()} {platform.release()}",
         "Architecture": platform.machine(),
-        "Test_Result_File": result_file_path
+        "Test_Result_File": result_file_path,
+        "wifi": "disabled",
+        "GPU": "disabled",
+        "bluetooth": "disabled",
+        "onACPower": True,
+        "brightness": 100,
     }
 
 def measure_energy_to_csv(n: int, csv_filename: str, folder_name: str = "energy_benchmark"):
