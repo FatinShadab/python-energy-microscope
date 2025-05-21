@@ -67,7 +67,18 @@ __default__ = {
         "k": 8,
         "query_sequence": "ACGTAGCTAGCTAGTACGATCGATCGTACGATCGATCGTAGCTAGCTGACGATCGATCGTACGATCGTAGCTAGCATCG",
         "target_sequence": "GATCGATCGTAGCTAGCATCGATCGTACGATCGATCGTAGCTAGCTGACGATCGATCGTACGATCGTAGCTAGCATCG"
-    }
+    },
+    
+    "mandelbrot": {
+        "test_n": 100,
+        "width": 100,
+        "height": 100,
+        "max_iter": 100,
+        "x_min": -2.0,
+        "x_max": 1.0,
+        "y_min": -1.5,
+        "y_max": 1.5
+    },
 
     
 }
