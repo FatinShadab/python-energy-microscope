@@ -26,17 +26,41 @@ def print_trajectories(positions: List[List[List[float]]], num_bodies: int) -> N
             print(f"Step {step + 1}: Position = {pos}")
         print()
 
-def main():
-    body1 = Body(5.972e24, np.array([0.0, 0.0, 0.0]), np.array([0.0, 0.0, 0.0]))
-    body2 = Body(7.348e22, np.array([384400000.0, 0.0, 0.0]), np.array([0.0, 1022.0, 0.0]))
-    
-    bodies = [body1, body2]
-
-    dt = 1000
-    num_steps = 10000
-    positions = simulate_nbody([body1, body2], dt, num_steps)
-    
+def driver(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Initializes the bodies, runs the N-Body simulation, and prints the results.
+    """
+    positions = simulate_nbody(bodies, dt, num_steps)
     print_trajectories(positions, len(bodies))
 
+@measure_time_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_cython")
+def run_time_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Runs the N-Body simulation and measures the time taken.
+    """
+    driver(bodies, dt, num_steps)
+
+@measure_energy_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_cython")
+def run_energy_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Runs the N-Body simulation and measures the energy consumed.
+    """
+    driver(bodies, dt, num_steps)
+
+
 if __name__ == "__main__":
-    main()
+    bodies = [
+        Body(
+            body["mass"],
+            np.array(body["position"], dtype=np.float64),
+            np.array(body["velocity"], dtype=np.float64)
+        )
+        for body in __default__["nbody"]["bodies"]
+    ]
+
+    dt = __default__["nbody"]["dt"]
+    num_steps = __default__["nbody"]["time_steps"]
+
+    # Run the energy benchmark
+    run_energy_benchmark(bodies, dt, num_steps)
+    run_time_benchmark(bodies, dt, num_steps)
