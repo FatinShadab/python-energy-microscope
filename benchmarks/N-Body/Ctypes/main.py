@@ -50,19 +50,45 @@ def run_simulation(bodies: List[Body], dt: float, num_steps: int) -> List[List[L
 
     return results
 
-def main():
-    body1 = Body(5.972e24, (0, 0, 0), (0, 0, 0))
-    body2 = Body(7.348e22, (384400000, 0, 0), (0, 1022, 0))
-
-    dt = 1000
-    num_steps = 10000
-    results = run_simulation([body1, body2], dt, num_steps)
-
+def driver(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Run the N-Body simulation and print the trajectory of each body.
+    """
+    results = run_simulation(bodies, dt, num_steps)
     for i, traj in enumerate(zip(*results)):
         print(f"Trajectory of Body {i+1}:")
         for step, pos in enumerate(traj):
             print(f"Step {step + 1}: Position = {pos}")
         print()
 
+@measure_time_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_ctypes")
+def run_time_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Measure and log the time it takes to simulate the N-body system using CTypes.
+    """
+    run_simulation(bodies, dt, num_steps)
+
+
+@measure_energy_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_ctypes")
+def run_energy_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
+    """
+    Measure and log the energy consumption of the N-body simulation using CTypes.
+    """
+    run_simulation(bodies, dt, num_steps)
+
+
 if __name__ == "__main__":
-    main()
+    input_data = __default__["nbody"]
+    bodies = [
+        Body(
+            mass=body["mass"],
+            position=(ctypes.c_double * 3)(*body["position"]),
+            velocity=(ctypes.c_double * 3)(*body["velocity"])
+        )
+        for body in input_data["bodies"]
+    ]
+    dt = input_data["dt"]
+    num_steps = input_data["time_steps"]
+
+    run_energy_benchmark(bodies, dt, num_steps)
+    run_time_benchmark(bodies, dt, num_steps)
