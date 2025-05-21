@@ -154,7 +154,7 @@ def run_time_benchmark(boides: List[Body], dt: float, num_steps: int) -> None:
     """
     Runs the N-Body simulation and measures the time taken.
     """
-    driver(bodies, dt, num_steps)
+    driver(boides, dt, num_steps)
 
 @measure_energy_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_cpython")
 def run_energy_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
