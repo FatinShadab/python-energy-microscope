@@ -34,11 +34,11 @@ def get_primes(n: int) -> List[int]:
 
 @measure_energy_to_csv(n=__default__["sieve"]["test_n"], csv_filename="sieve_ctypes")
 def run_energy_benchmark(n: int) -> None:
-    get_primes(n)
+    print(f"Primes up to {n}: {get_primes(n)}")
 
 @measure_time_to_csv(n=__default__["sieve"]["test_n"], csv_filename="sieve_ctypes")
 def run_time_benchmark(n: int) -> None:
-    get_primes(n)
+    print(f"Primes up to {n}: {get_primes(n)}")
 
 
 if __name__ == "__main__":

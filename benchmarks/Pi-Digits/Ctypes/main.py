@@ -1,4 +1,5 @@
 import sys
+import time
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
@@ -34,10 +35,12 @@ def driver(iterations):
 @measure_energy_to_csv(n=__default__["pi_digits"]["test_n"], csv_filename="pi_digits_ctypes")
 def run_energy_benchmark(iterations: int) -> None:
     driver(iterations)
+    time.sleep(0.01)
 
 @measure_time_to_csv(n=__default__["pi_digits"]["test_n"], csv_filename="pi_digits_ctypes")
 def run_time_benchmark(iterations: int) -> None:
     driver(iterations)
+    time.sleep(0.01)
     
     
 if __name__ == "__main__":
