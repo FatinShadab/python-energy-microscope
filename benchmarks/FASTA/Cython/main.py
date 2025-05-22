@@ -1,4 +1,5 @@
 from raw import fasta_alignment
+import time
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
@@ -24,11 +25,13 @@ def driver(k, query, target):
 @measure_energy_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_cython")
 def run_energy_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
     driver(k, query_sequence, target_sequence)
+    time.sleep(0.01)
 
 # Benchmarking function for time
 @measure_time_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_cython")
 def run_time_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
     driver(k, query_sequence, target_sequence)
+    time.sleep(0.01)
 
 
 if __name__ == "__main__":
