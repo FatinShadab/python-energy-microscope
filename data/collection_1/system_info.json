@@ -1,0 +1,16 @@
+{
+    "CPU": "x86_64",
+    "RAM_GB": 7.44,
+    "OS": "Linux 6.8.0-59-generic",
+    "Architecture": "x86_64",
+    "Test_Result_File": "energy_benchmark/K_Nucleotide_cpython.csv",
+    "wifi": "disabled",
+    "GPU": "disabled",
+    "bluetooth": "disabled",
+    "onACPower": true,
+    "brightness": 100,
+    "vlume": 0,
+    "microphone": "disabled",
+    "camera": "disabled",
+    "python-version": "Python 3.13.2"
+}
