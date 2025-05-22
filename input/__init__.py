@@ -25,7 +25,7 @@ __default__ = {
 
     'n-queens': {
         'test_n': 50,
-        'n': 18,
+        'n': 12,
     },
 
     'reverse_complement': {
