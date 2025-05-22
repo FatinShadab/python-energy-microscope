@@ -1,4 +1,5 @@
 import ctypes
+import time
 
 import sys
 import os
@@ -59,6 +60,7 @@ def driver(k, query, target):
 @measure_energy_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_ctypes")
 def run_energy_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
     driver(k, query_sequence, target_sequence)
+    time.sleep(0.01) # Simulate some processing time
 
 # Benchmarking function for time
 @measure_time_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_ctypes")
