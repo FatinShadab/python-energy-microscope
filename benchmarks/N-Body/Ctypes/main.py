@@ -66,7 +66,7 @@ def run_time_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
     """
     Measure and log the time it takes to simulate the N-body system using CTypes.
     """
-    run_simulation(bodies, dt, num_steps)
+    driver(bodies, dt, num_steps)
 
 
 @measure_energy_to_csv(n=__default__["nbody"]["test_n"], csv_filename="nbody_ctypes")
@@ -74,7 +74,7 @@ def run_energy_benchmark(bodies: List[Body], dt: float, num_steps: int) -> None:
     """
     Measure and log the energy consumption of the N-body simulation using CTypes.
     """
-    run_simulation(bodies, dt, num_steps)
+    driver(bodies, dt, num_steps)
 
 
 if __name__ == "__main__":
