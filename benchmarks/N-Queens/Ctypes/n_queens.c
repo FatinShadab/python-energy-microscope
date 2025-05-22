@@ -56,7 +56,8 @@ void solve(int** board, int row, int n, int*** solutions, int* solution_count) {
 
 int solve_n_queens(int n, int**** out_solutions) {
     int** board = allocate_board(n);
-    int*** solutions = (int***)malloc(10000 * sizeof(int**));  // up to 10000 solutions
+    // For n = 12, there are 14200 solutions
+    int*** solutions = (int***)malloc(15000 * sizeof(int**));
     int count = 0;
     solve(board, 0, n, solutions, &count);
     free_board(board, n);
