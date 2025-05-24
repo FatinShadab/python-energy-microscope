@@ -12,5 +12,8 @@
     "vlume": 0,
     "microphone": "disabled",
     "camera": "disabled",
-    "python-version": "Python 3.13.2"
+    "python-version": "Python 3.13.2",
+    "pypy-version": "PyPy 7.3.19 with GCC 10.2.1 20210130 (Red Hat 10.2.1-11)",
+    "pypy-python-version": "Python 3.11.11 (0253c85bf5f8, Feb 26 2025, 10:42:42)",
+    "cython-version": "Cython 3.0.12"
 }
