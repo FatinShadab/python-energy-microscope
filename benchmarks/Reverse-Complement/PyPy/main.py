@@ -53,3 +53,4 @@ if __name__ == "__main__":
     # Run benchmarks
     run_energy_benchmark(dna)
     run_time_benchmark(dna)
+
