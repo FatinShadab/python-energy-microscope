@@ -1,5 +1,6 @@
 import re
 from typing import List, Tuple
+import time
 from raw import regex_redux
 import sys
 import os
@@ -15,6 +16,7 @@ def run_time_benchmark(file_path: str) -> None:
     Measure and log the time it takes to run the Regex-Redux benchmark.
     """
     regex_redux(file_path)
+    time.sleep(0.01)
 
 @measure_energy_to_csv(n=__default__["regex_redux"]["test_n"], csv_filename="regex_redux_pypy")
 def run_energy_benchmark(file_path: str) -> None:
@@ -22,6 +24,7 @@ def run_energy_benchmark(file_path: str) -> None:
     Measure and log the energy consumption of the Regex-Redux benchmark.
     """
     regex_redux(file_path)
+    time.sleep(0.01)
 
 
 if __name__ == "__main__":
