@@ -1,5 +1,6 @@
 # cython: boundscheck=False
 # cython: wraparound=False
+
 from libc.math cimport sqrt
 from typing import List
 cimport cython
@@ -28,21 +29,29 @@ cpdef double spectral_norm(List[List[object]] matrix, int iterations=10):
     cdef List[float] u = [1.0] * n
     cdef List[float] v
     cdef List[float] temp
+    cdef List[List[object]] transposed
     cdef double norm
     cdef int i, j
 
     for _ in range(iterations):
         v = multiply_matrix_vector(matrix, u)
 
-        # Transpose manually
+        # Manual transpose of matrix
         transposed = [[matrix[j][i] for j in range(n)] for i in range(n)]
 
         u = multiply_matrix_vector(transposed, v)
 
-        # Normalize
-        norm = sqrt(sum(x * x for x in u))
-        u = [x / norm for x in u]
+        # Normalize vector u
+        norm = 0.0
+        for i in range(n):
+            norm += u[i] * u[i]
+        norm = sqrt(norm)
+        for i in range(n):
+            u[i] = u[i] / norm
 
-    # Final spectral norm computation
+    # Final spectral norm calculation
     temp = multiply_matrix_vector(matrix, u)
-    return sqrt(sum(temp[i] * u[i] for i in range(n)))
+    norm = 0.0
+    for i in range(n):
+        norm += temp[i] * u[i]
+    return sqrt(norm)
