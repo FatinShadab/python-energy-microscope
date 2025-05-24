@@ -1,0 +1,16 @@
+filename,average_package (uJ)
+spectral_norm_cpython,18308018.3
+pi_digits_cython,70699.3
+fasta_cython,232705.74
+fannkuch_redux_cython,52746263.9
+reverse_complement_cpython,16870961.4
+hanoi_cython,32698927.5
+strassen_cython,7362124.74
+nbody_cython,129773515.38
+knn_cython,4177164.6
+n_queens_cython,45205762.0
+K_Nucleotide_cython,79715.36
+mandelbrot_cython,76421.94
+sieve_cython,63276512.84
+binary_trees_cython,29055706.9
+regex_redux_cython,77540.06

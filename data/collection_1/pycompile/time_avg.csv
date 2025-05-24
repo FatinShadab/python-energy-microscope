@@ -1,0 +1,16 @@
+filename,execution_time (s)
+knn_pycompile,0.8175534677505493
+spectral_norm_pycompile,3.668473448753357
+strassen_pycompile,3.49222993850708
+hanoi_pycompile,4.929460830688477
+K_Nucleotide_pycompile,0.011432805061340333
+binary_trees_pycompile,78.29330416202545
+mandelbrot_pycompile,0.06283477306365967
+reverse_complement_pycompile,3.2847808837890624
+fasta_pycompile,0.3871436882019043
+pi_digits_pycompile,0.010862698554992676
+n_queens_pycompile,18.408292117118837
+regex_redux_pycompile,0.011072044372558593
+sieve_pycompile,11.924428782463075
+fannkuch_redux_pycompile,15.602048382759094
+nbody_py_compile,49.41032201766968

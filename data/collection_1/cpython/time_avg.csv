@@ -1,0 +1,16 @@
+filename,execution_time (s)
+spectral_norm_cpython,3.679777355194092
+pi_digits_cpython,0.005646169185638428
+hanoi_cpython,5.192964210510254
+reverse_complement_cpython,3.30131404876709
+nbody_cpython,53.07476050376892
+fasta_cpython,0.3876806640625
+knn_cpython,0.8206931304931641
+binary_trees_cpython,78.11383852481842
+sieve_cpython,10.445477275848388
+K_Nucleotide_cpython,0.01120025634765625
+strassen_cpython,3.4283283662796022
+n_queens_cpython,16.724624466896056
+mandelbrot_cpython,0.062226080894470216
+regex_redux_cpython,0.010967345237731933
+fannkuch_redux_cpython,1.574516296386719e-05

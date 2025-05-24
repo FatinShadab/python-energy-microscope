@@ -1,0 +1,16 @@
+filename,average_package (uJ)
+K_Nucleotide_ctypes,74972.94
+regex_redux_ctypes,79233.16
+pi_digits_ctypes,66044.76
+fannkuch_redux_ctypes,2445803.04
+knn_ctypes,2583311.6866666665
+nbody_ctypes,62495209.88
+sieve_ctypes,82919854.88
+strassen_ctypes,1733363.0733333332
+spectral_norm_ctypes,271925.6
+binary_trees_ctypes,32711186.98
+mandelbrot_ctypes,104371.06
+reverse_complement_ctypes,1437556.12
+fasta_ctypes,75655.32
+hanoi_ctypes,26679733.94
+n_queens_ctypes,55119890.6

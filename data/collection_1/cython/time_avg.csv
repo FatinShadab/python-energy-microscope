@@ -1,0 +1,16 @@
+filename,execution_time (s)
+spectral_norm_cpython,3.679777355194092
+pi_digits_cython,0.010375442504882813
+fasta_cython,0.03490278720855713
+fannkuch_redux_cython,10.526147356033325
+hanoi_cython,4.616051383018494
+reverse_complement_cython,4.514169111251831
+strassen_cython,1.4869061708450317
+nbody_cython,21.94111473083496
+knn_cython,0.7440150260925293
+n_queens_cython,7.911697978973389
+K_Nucleotide_cython,0.011134881973266602
+mandelbrot_cython,0.01156611442565918
+sieve_cython,9.43695152759552
+binary_trees_cython,6.573433423042298
+regex_redux_cython,0.010820794105529784

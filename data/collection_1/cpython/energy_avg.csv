@@ -1,0 +1,16 @@
+filename,average_package (uJ)
+spectral_norm_cpython,18308018.3
+pi_digits_cpython,73097.35
+hanoi_cpython,36645014.86
+reverse_complement_cpython,16870961.4
+nbody_cpython,285343029.26
+fasta_cpython,1923950.14
+knn_cpython,4412189.62
+binary_trees_cpython,388241210.72
+sieve_cpython,70161238.82
+K_Nucleotide_cpython,76346.22
+strassen_cpython,16797345.92
+n_queens_cpython,92754005.72
+mandelbrot_cpython,401610.3
+regex_redux_cpython,78467.86
+fannkuch_redux_cpython,71774177.82

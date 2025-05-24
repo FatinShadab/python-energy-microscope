@@ -1,0 +1,16 @@
+filename,average_package (uJ)
+knn_pycompile,4512045.32
+spectral_norm_pycompile,16382455.64
+strassen_pycompile,16690068.36
+hanoi_pycompile,34303875.78
+K_Nucleotide_pycompile,72906.34
+binary_trees_pycompile,389793671.32
+mandelbrot_pycompile,440514.0
+reverse_complement_pycompile,15921276.38
+fasta_pycompile,1906851.82
+pi_digits_pycompile,71106.98
+n_queens_pycompile,103317163.54
+regex_redux_pycompile,70723.7
+sieve_pycompile,79364253.6
+fannkuch_redux_pycompile,71239820.02
+nbody_py_compile,249711052.64
