@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
 
 from energy_module.decorator import measure_energy_to_csv
 from time_modules.decorator import measure_time_to_csv
@@ -99,13 +99,13 @@ def driver(width: int, height: int, max_iter: int,
     render_mandelbrot(mandelbrot_data, max_iter)
 
 # Measure energy consumption and time taken for the Mandelbrot set generation
-@measure_energy_to_csv(n=__default__["mandelbrot"]["test_n"], csv_filename="mandelbrot_cpython")
+@measure_energy_to_csv(n=__default__["mandelbrot"]["test_n"], csv_filename="mandelbrot_pycompile")
 def run_energy_benchmark(width: int, height: int, max_iter: int, 
                          x_min: float, x_max: float, y_min: float, y_max: float) -> None:
     driver(width, height, max_iter, x_min, x_max, y_min, y_max)
 
 # Measure time taken for the Mandelbrot set generation
-@measure_time_to_csv(n=__default__["mandelbrot"]["test_n"], csv_filename="mandelbrot_cpython")
+@measure_time_to_csv(n=__default__["mandelbrot"]["test_n"], csv_filename="mandelbrot_pycompile")
 def run_time_benchmark(width: int, height: int, max_iter: int, 
                          x_min: float, x_max: float, y_min: float, y_max: float) -> None:
     driver(width, height, max_iter, x_min, x_max, y_min, y_max)

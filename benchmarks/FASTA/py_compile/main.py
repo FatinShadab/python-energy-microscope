@@ -1,7 +1,8 @@
 from typing import List, Tuple
 import sys
+import time
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
 
 from energy_module.decorator import measure_energy_to_csv
 from time_modules.decorator import measure_time_to_csv
@@ -143,14 +144,16 @@ def driver(k: int, query_sequence: str, target_sequence: str) -> None:
     print(f"Target:  {aligned_target}")
     
 # Benchmarking functions for energy
-@measure_energy_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_py_compile")
+@measure_energy_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_pycompile")
 def run_energy_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
     driver(k, query_sequence, target_sequence)
+    time.sleep(0.01) # Simulate some processing time
 
 # Benchmarking function for time
-@measure_time_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_py_compile")
+@measure_time_to_csv(n=__default__["fasta"]["test_n"], csv_filename="fasta_pycompile")
 def run_time_benchmark(k: int, query_sequence: str, target_sequence: str) -> None:
     driver(k, query_sequence, target_sequence)
+    time.sleep(0.01) # Simulate some processing time
 
 # Example usage
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
 
 from energy_module.decorator import measure_energy_to_csv
 from time_modules.decorator import measure_time_to_csv
@@ -64,11 +64,11 @@ def spectral_norm(matrix: List[List[int]], iterations=10):
     # Step 5: Calculate the spectral norm (largest singular value)
     return math.sqrt(sum(multiply_matrix_vector(matrix, u)[i] * u[i] for i in range(n)))
 
-@measure_energy_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_cpython")
+@measure_energy_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_pycompile")
 def run_energy_benchmark(matrix: List[List[int]], iterations=10) -> None:
     spectral_norm(matrix, iterations)
 
-@measure_time_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_cpython")
+@measure_time_to_csv(n=__default__["spectral-norm"]["test_n"], csv_filename="spectral_norm_pycompile")
 def run_time_benchmark(matrix: List[List[int]], iterations=10) -> None:
     spectral_norm(matrix, iterations)
 

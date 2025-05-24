@@ -1,6 +1,7 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+import time
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
 
 from energy_module.decorator import measure_energy_to_csv
 from time_modules.decorator import measure_time_to_csv
@@ -67,10 +68,12 @@ def main() -> None:
 @measure_energy_to_csv(n=__default__["K_Nucleotide"]["test_n"], csv_filename="K_Nucleotide_pycompile")
 def run_energy_benchmark() -> None:
     main()
+    time.sleep(0.01)
 
 @measure_time_to_csv(n=__default__["K_Nucleotide"]["test_n"], csv_filename="K_Nucleotide_pycompile")
 def run_time_benchmark() -> None:
     main()
+    time.sleep(0.01)
 
 if __name__ == "__main__":
     run_energy_benchmark()

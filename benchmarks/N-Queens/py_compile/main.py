@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../")))
 
 from energy_module.decorator import measure_energy_to_csv
 from time_modules.decorator import measure_time_to_csv
@@ -113,11 +113,11 @@ def main(n):
     for sol in solutions:
         print_solution(sol)
         
-@measure_energy_to_csv(n=__default__["n-queens"]["test_n"], csv_filename="n_queens_pycompiler")
+@measure_energy_to_csv(n=__default__["n-queens"]["test_n"], csv_filename="n_queens_pycompile")
 def run_energy_benchmark(n: int) -> None:
     main(n)
 
-@measure_time_to_csv(n=__default__["n-queens"]["test_n"], csv_filename="n_queens_pycompiler")
+@measure_time_to_csv(n=__default__["n-queens"]["test_n"], csv_filename="n_queens_pycompile")
 def run_time_benchmark(n: int) -> None:
     main(n)
 
