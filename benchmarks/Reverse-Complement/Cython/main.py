@@ -10,11 +10,11 @@ from raw import reverse_complement
 
 @measure_energy_to_csv(n=__default__["reverse_complement"]["test_n"], csv_filename="reverse_complement_cython")
 def run_energy_benchmark(dna_sequence: str) -> None:
-    reverse_complement(dna_sequence)
+    reverse_complement(dna_sequence.encode("utf-8"))
     
 @measure_time_to_csv(n=__default__["reverse_complement"]["test_n"], csv_filename="reverse_complement_cython")
 def run_time_benchmark(dna_sequence: str) -> None:
-    reverse_complement(dna_sequence)
+    reverse_complement(dna_sequence.encode("utf-8"))
 
 
 if __name__ == "__main__":

@@ -1234,6 +1234,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 /* Early includes */
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -1483,6 +1484,7 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "raw.pyx",
+  "type.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* ForceInitThreads.proto */
@@ -1756,6 +1758,28 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
 
+/* RaiseException.proto */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
+/* TypeImport.proto */
+#ifndef __PYX_HAVE_RT_ImportType_proto_3_0_12
+#define __PYX_HAVE_RT_ImportType_proto_3_0_12
+#if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 201112L
+#include <stdalign.h>
+#endif
+#if (defined (__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) || __cplusplus >= 201103L
+#define __PYX_GET_STRUCT_ALIGNMENT_3_0_12(s) alignof(s)
+#else
+#define __PYX_GET_STRUCT_ALIGNMENT_3_0_12(s) sizeof(void*)
+#endif
+enum __Pyx_ImportType_CheckSize_3_0_12 {
+   __Pyx_ImportType_CheckSize_Error_3_0_12 = 0,
+   __Pyx_ImportType_CheckSize_Warn_3_0_12 = 1,
+   __Pyx_ImportType_CheckSize_Ignore_3_0_12 = 2
+};
+static PyTypeObject *__Pyx_ImportType_3_0_12(PyObject* module, const char *module_name, const char *class_name, size_t size, size_t alignment, enum __Pyx_ImportType_CheckSize_3_0_12 check_size);
+#endif
+
 /* IncludeStructmemberH.proto */
 #include <structmember.h>
 
@@ -2021,6 +2045,18 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from "libc.stdlib" */
 
+/* Module declarations from "libc.stdio" */
+
+/* Module declarations from "__builtin__" */
+
+/* Module declarations from "cpython.type" */
+
+/* Module declarations from "cpython" */
+
+/* Module declarations from "cpython.object" */
+
+/* Module declarations from "cpython.bytes" */
+
 /* Module declarations from "raw" */
 static unsigned char __pyx_f_3raw_complement(unsigned char); /*proto*/
 /* #### Code section: typeinfo ### */
@@ -2031,6 +2067,7 @@ int __pyx_module_is_main_raw = 0;
 
 /* Implementation of "raw" */
 /* #### Code section: global_var ### */
+static PyObject *__pyx_builtin_MemoryError;
 static PyObject *__pyx_builtin_range;
 /* #### Code section: string_decls ### */
 static const char __pyx_k_A[] = "A";
@@ -2040,7 +2077,7 @@ static const char __pyx_k_N[] = "N";
 static const char __pyx_k_T[] = "T";
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k_n[] = "n";
-static const char __pyx_k__3[] = "?";
+static const char __pyx_k__4[] = "?";
 static const char __pyx_k_raw[] = "raw";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
@@ -2049,11 +2086,13 @@ static const char __pyx_k_range[] = "range";
 static const char __pyx_k_result[] = "result";
 static const char __pyx_k_raw_pyx[] = "raw.pyx";
 static const char __pyx_k_rev_comp[] = "rev_comp";
+static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_dna_sequence[] = "dna_sequence";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_reverse_complement[] = "reverse_complement";
+static const char __pyx_k_Failed_to_allocate_memory[] = "Failed to allocate memory";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_3raw_reverse_complement(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_dna_sequence); /* proto */
 /* #### Code section: late_includes ### */
@@ -2089,12 +2128,27 @@ typedef struct {
   #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  PyTypeObject *__pyx_ptype_7cpython_4type_type;
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  #if CYTHON_USE_MODULE_STATE
+  #endif
+  #if CYTHON_USE_MODULE_STATE
+  #endif
   PyObject *__pyx_n_b_A;
   PyObject *__pyx_n_b_C;
+  PyObject *__pyx_kp_u_Failed_to_allocate_memory;
   PyObject *__pyx_n_b_G;
+  PyObject *__pyx_n_s_MemoryError;
   PyObject *__pyx_n_b_N;
   PyObject *__pyx_n_b_T;
-  PyObject *__pyx_n_s__3;
+  PyObject *__pyx_n_s__4;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_dna_sequence;
@@ -2111,7 +2165,8 @@ typedef struct {
   PyObject *__pyx_n_s_reverse_complement;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_tuple_;
-  PyObject *__pyx_codeobj__2;
+  PyObject *__pyx_tuple__2;
+  PyObject *__pyx_codeobj__3;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2154,12 +2209,15 @@ static int __pyx_m_clear(PyObject *m) {
   #ifdef __Pyx_FusedFunction_USED
   Py_CLEAR(clear_module_state->__pyx_FusedFunctionType);
   #endif
+  Py_CLEAR(clear_module_state->__pyx_ptype_7cpython_4type_type);
   Py_CLEAR(clear_module_state->__pyx_n_b_A);
   Py_CLEAR(clear_module_state->__pyx_n_b_C);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_Failed_to_allocate_memory);
   Py_CLEAR(clear_module_state->__pyx_n_b_G);
+  Py_CLEAR(clear_module_state->__pyx_n_s_MemoryError);
   Py_CLEAR(clear_module_state->__pyx_n_b_N);
   Py_CLEAR(clear_module_state->__pyx_n_b_T);
-  Py_CLEAR(clear_module_state->__pyx_n_s__3);
+  Py_CLEAR(clear_module_state->__pyx_n_s__4);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_dna_sequence);
@@ -2176,7 +2234,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_reverse_complement);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__2);
+  Py_CLEAR(clear_module_state->__pyx_tuple__2);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__3);
   return 0;
 }
 #endif
@@ -2197,12 +2256,15 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
+  Py_VISIT(traverse_module_state->__pyx_ptype_7cpython_4type_type);
   Py_VISIT(traverse_module_state->__pyx_n_b_A);
   Py_VISIT(traverse_module_state->__pyx_n_b_C);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_Failed_to_allocate_memory);
   Py_VISIT(traverse_module_state->__pyx_n_b_G);
+  Py_VISIT(traverse_module_state->__pyx_n_s_MemoryError);
   Py_VISIT(traverse_module_state->__pyx_n_b_N);
   Py_VISIT(traverse_module_state->__pyx_n_b_T);
-  Py_VISIT(traverse_module_state->__pyx_n_s__3);
+  Py_VISIT(traverse_module_state->__pyx_n_s__4);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_dna_sequence);
@@ -2219,7 +2281,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_reverse_complement);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__2);
+  Py_VISIT(traverse_module_state->__pyx_tuple__2);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__3);
   return 0;
 }
 #endif
@@ -2254,12 +2317,27 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #endif
 #if CYTHON_USE_MODULE_STATE
 #endif
+#if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
+#endif
+#define __pyx_ptype_7cpython_4type_type __pyx_mstate_global->__pyx_ptype_7cpython_4type_type
+#if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
+#endif
 #define __pyx_n_b_A __pyx_mstate_global->__pyx_n_b_A
 #define __pyx_n_b_C __pyx_mstate_global->__pyx_n_b_C
+#define __pyx_kp_u_Failed_to_allocate_memory __pyx_mstate_global->__pyx_kp_u_Failed_to_allocate_memory
 #define __pyx_n_b_G __pyx_mstate_global->__pyx_n_b_G
+#define __pyx_n_s_MemoryError __pyx_mstate_global->__pyx_n_s_MemoryError
 #define __pyx_n_b_N __pyx_mstate_global->__pyx_n_b_N
 #define __pyx_n_b_T __pyx_mstate_global->__pyx_n_b_T
-#define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
+#define __pyx_n_s__4 __pyx_mstate_global->__pyx_n_s__4
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_dna_sequence __pyx_mstate_global->__pyx_n_s_dna_sequence
@@ -2276,11 +2354,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_reverse_complement __pyx_mstate_global->__pyx_n_s_reverse_complement
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
-#define __pyx_codeobj__2 __pyx_mstate_global->__pyx_codeobj__2
+#define __pyx_tuple__2 __pyx_mstate_global->__pyx_tuple__2
+#define __pyx_codeobj__3 __pyx_mstate_global->__pyx_codeobj__3
 /* #### Code section: module_code ### */
 
-/* "raw.pyx":5
- * from libc.string cimport memcpy
+/* "raw.pyx":6
+ * from cpython.bytes cimport PyBytes_FromStringAndSize
  * 
  * cdef unsigned char complement(unsigned char base):             # <<<<<<<<<<<<<<
  *     if base == b'A'[0]:
@@ -2300,36 +2379,36 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("complement", 1);
 
-  /* "raw.pyx":6
+  /* "raw.pyx":7
  * 
  * cdef unsigned char complement(unsigned char base):
  *     if base == b'A'[0]:             # <<<<<<<<<<<<<<
  *         return b'T'[0]
  *     elif base == b'T'[0]:
  */
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_A, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_A, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_4) {
 
-    /* "raw.pyx":7
+    /* "raw.pyx":8
  * cdef unsigned char complement(unsigned char base):
  *     if base == b'A'[0]:
  *         return b'T'[0]             # <<<<<<<<<<<<<<
  *     elif base == b'T'[0]:
  *         return b'A'[0]
  */
-    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_T, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_T, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L1_error)
     __pyx_r = __pyx_t_5;
     goto __pyx_L0;
 
-    /* "raw.pyx":6
+    /* "raw.pyx":7
  * 
  * cdef unsigned char complement(unsigned char base):
  *     if base == b'A'[0]:             # <<<<<<<<<<<<<<
@@ -2338,36 +2417,36 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
  */
   }
 
-  /* "raw.pyx":8
+  /* "raw.pyx":9
  *     if base == b'A'[0]:
  *         return b'T'[0]
  *     elif base == b'T'[0]:             # <<<<<<<<<<<<<<
  *         return b'A'[0]
  *     elif base == b'C'[0]:
  */
-  __pyx_t_3 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_T, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_T, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_4) {
 
-    /* "raw.pyx":9
+    /* "raw.pyx":10
  *         return b'T'[0]
  *     elif base == b'T'[0]:
  *         return b'A'[0]             # <<<<<<<<<<<<<<
  *     elif base == b'C'[0]:
  *         return b'G'[0]
  */
-    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_A, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_A, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L1_error)
     __pyx_r = __pyx_t_5;
     goto __pyx_L0;
 
-    /* "raw.pyx":8
+    /* "raw.pyx":9
  *     if base == b'A'[0]:
  *         return b'T'[0]
  *     elif base == b'T'[0]:             # <<<<<<<<<<<<<<
@@ -2376,36 +2455,36 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
  */
   }
 
-  /* "raw.pyx":10
+  /* "raw.pyx":11
  *     elif base == b'T'[0]:
  *         return b'A'[0]
  *     elif base == b'C'[0]:             # <<<<<<<<<<<<<<
  *         return b'G'[0]
  *     elif base == b'G'[0]:
  */
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_C, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_C, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_4) {
 
-    /* "raw.pyx":11
+    /* "raw.pyx":12
  *         return b'A'[0]
  *     elif base == b'C'[0]:
  *         return b'G'[0]             # <<<<<<<<<<<<<<
  *     elif base == b'G'[0]:
  *         return b'C'[0]
  */
-    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_G, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_G, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L1_error)
     __pyx_r = __pyx_t_5;
     goto __pyx_L0;
 
-    /* "raw.pyx":10
+    /* "raw.pyx":11
  *     elif base == b'T'[0]:
  *         return b'A'[0]
  *     elif base == b'C'[0]:             # <<<<<<<<<<<<<<
@@ -2414,36 +2493,36 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
  */
   }
 
-  /* "raw.pyx":12
+  /* "raw.pyx":13
  *     elif base == b'C'[0]:
  *         return b'G'[0]
  *     elif base == b'G'[0]:             # <<<<<<<<<<<<<<
  *         return b'C'[0]
  *     else:
  */
-  __pyx_t_3 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_unsigned_char(__pyx_v_base); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_G, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_n_b_G, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_4) {
 
-    /* "raw.pyx":13
+    /* "raw.pyx":14
  *         return b'G'[0]
  *     elif base == b'G'[0]:
  *         return b'C'[0]             # <<<<<<<<<<<<<<
  *     else:
  *         return b'N'[0]  # Unknown base fallback
  */
-    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_C, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_C, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L1_error)
     __pyx_r = __pyx_t_5;
     goto __pyx_L0;
 
-    /* "raw.pyx":12
+    /* "raw.pyx":13
  *     elif base == b'C'[0]:
  *         return b'G'[0]
  *     elif base == b'G'[0]:             # <<<<<<<<<<<<<<
@@ -2452,7 +2531,7 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
  */
   }
 
-  /* "raw.pyx":15
+  /* "raw.pyx":16
  *         return b'C'[0]
  *     else:
  *         return b'N'[0]  # Unknown base fallback             # <<<<<<<<<<<<<<
@@ -2460,13 +2539,13 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
  * def reverse_complement(bytes dna_sequence):
  */
   /*else*/ {
-    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_N, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_n_b_N, 0, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L1_error)
     __pyx_r = __pyx_t_5;
     goto __pyx_L0;
   }
 
-  /* "raw.pyx":5
- * from libc.string cimport memcpy
+  /* "raw.pyx":6
+ * from cpython.bytes cimport PyBytes_FromStringAndSize
  * 
  * cdef unsigned char complement(unsigned char base):             # <<<<<<<<<<<<<<
  *     if base == b'A'[0]:
@@ -2485,7 +2564,7 @@ static unsigned char __pyx_f_3raw_complement(unsigned char __pyx_v_base) {
   return __pyx_r;
 }
 
-/* "raw.pyx":17
+/* "raw.pyx":18
  *         return b'N'[0]  # Unknown base fallback
  * 
  * def reverse_complement(bytes dna_sequence):             # <<<<<<<<<<<<<<
@@ -2501,7 +2580,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_3raw_reverse_complement, "\n    Computes the reverse complement of a given DNA sequence.\n    \n    Args:\n        dna_sequence (bytes): The input DNA sequence in bytes (e.g., b\"ATGC\").\n\n    Returns:\n        bytes: The reverse complement as bytes (e.g., b\"GCAT\").\n    ");
+PyDoc_STRVAR(__pyx_doc_3raw_reverse_complement, "\n    Computes the reverse complement of a given DNA sequence.\n\n    Args:\n        dna_sequence (bytes): The input DNA sequence in bytes (e.g., b\"ATGC\").\n\n    Returns:\n        bytes: The reverse complement as bytes (e.g., b\"GCAT\").\n    ");
 static PyMethodDef __pyx_mdef_3raw_1reverse_complement = {"reverse_complement", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3raw_1reverse_complement, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_3raw_reverse_complement};
 static PyObject *__pyx_pw_3raw_1reverse_complement(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -2547,12 +2626,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 17, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "reverse_complement") < 0)) __PYX_ERR(0, 17, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "reverse_complement") < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -2563,7 +2642,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reverse_complement", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 17, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reverse_complement", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 18, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2577,7 +2656,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dna_sequence), (&PyBytes_Type), 1, "dna_sequence", 1))) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dna_sequence), (&PyBytes_Type), 1, "dna_sequence", 1))) __PYX_ERR(0, 18, __pyx_L1_error)
   __pyx_r = __pyx_pf_3raw_reverse_complement(__pyx_self, __pyx_v_dna_sequence);
 
   /* function exit code */
@@ -2603,106 +2682,124 @@ static PyObject *__pyx_pf_3raw_reverse_complement(CYTHON_UNUSED PyObject *__pyx_
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   Py_ssize_t __pyx_t_1;
-  Py_ssize_t __pyx_t_2;
-  Py_ssize_t __pyx_t_3;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
   Py_ssize_t __pyx_t_4;
-  char __pyx_t_5;
-  unsigned char __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
+  Py_ssize_t __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  char __pyx_t_7;
+  unsigned char __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reverse_complement", 1);
 
-  /* "raw.pyx":27
+  /* "raw.pyx":28
  *         bytes: The reverse complement as bytes (e.g., b"GCAT").
  *     """
  *     cdef Py_ssize_t n = len(dna_sequence)             # <<<<<<<<<<<<<<
  *     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)
- *     cdef Py_ssize_t i
+ *     if not rev_comp:
  */
   if (unlikely(__pyx_v_dna_sequence == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 27, __pyx_L1_error)
+    __PYX_ERR(0, 28, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyBytes_GET_SIZE(__pyx_v_dna_sequence); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_GET_SIZE(__pyx_v_dna_sequence); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_v_n = __pyx_t_1;
 
-  /* "raw.pyx":28
+  /* "raw.pyx":29
  *     """
  *     cdef Py_ssize_t n = len(dna_sequence)
  *     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)             # <<<<<<<<<<<<<<
- *     cdef Py_ssize_t i
- * 
+ *     if not rev_comp:
+ *         raise MemoryError("Failed to allocate memory")
  */
   __pyx_v_rev_comp = ((unsigned char *)malloc(__pyx_v_n));
 
-  /* "raw.pyx":31
- *     cdef Py_ssize_t i
+  /* "raw.pyx":30
+ *     cdef Py_ssize_t n = len(dna_sequence)
+ *     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)
+ *     if not rev_comp:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Failed to allocate memory")
  * 
+ */
+  __pyx_t_2 = (!(__pyx_v_rev_comp != 0));
+  if (unlikely(__pyx_t_2)) {
+
+    /* "raw.pyx":31
+ *     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)
+ *     if not rev_comp:
+ *         raise MemoryError("Failed to allocate memory")             # <<<<<<<<<<<<<<
+ * 
+ *     cdef Py_ssize_t i
+ */
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 31, __pyx_L1_error)
+
+    /* "raw.pyx":30
+ *     cdef Py_ssize_t n = len(dna_sequence)
+ *     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)
+ *     if not rev_comp:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Failed to allocate memory")
+ * 
+ */
+  }
+
+  /* "raw.pyx":34
+ * 
+ *     cdef Py_ssize_t i
  *     for i in range(n):             # <<<<<<<<<<<<<<
  *         rev_comp[i] = complement(dna_sequence[n - i - 1])
  * 
  */
   __pyx_t_1 = __pyx_v_n;
-  __pyx_t_2 = __pyx_t_1;
-  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
-    __pyx_v_i = __pyx_t_3;
+  __pyx_t_4 = __pyx_t_1;
+  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
+    __pyx_v_i = __pyx_t_5;
 
-    /* "raw.pyx":32
- * 
+    /* "raw.pyx":35
+ *     cdef Py_ssize_t i
  *     for i in range(n):
  *         rev_comp[i] = complement(dna_sequence[n - i - 1])             # <<<<<<<<<<<<<<
  * 
- *     result = bytes(<char*>rev_comp, n)
+ *     result = PyBytes_FromStringAndSize(<char*>rev_comp, n)
  */
     if (unlikely(__pyx_v_dna_sequence == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 32, __pyx_L1_error)
+      __PYX_ERR(0, 35, __pyx_L1_error)
     }
-    __pyx_t_4 = ((__pyx_v_n - __pyx_v_i) - 1);
-    __pyx_t_5 = __Pyx_PyBytes_GetItemInt(__pyx_v_dna_sequence, __pyx_t_4, 1); if (unlikely(__pyx_t_5 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L1_error)
-    __pyx_t_6 = __pyx_f_3raw_complement(__pyx_t_5); if (unlikely(__pyx_t_6 == ((unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L1_error)
-    (__pyx_v_rev_comp[__pyx_v_i]) = __pyx_t_6;
+    __pyx_t_6 = ((__pyx_v_n - __pyx_v_i) - 1);
+    __pyx_t_7 = __Pyx_PyBytes_GetItemInt(__pyx_v_dna_sequence, __pyx_t_6, 1); if (unlikely(__pyx_t_7 == ((char)((char)-1)) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_3raw_complement(__pyx_t_7); if (unlikely(__pyx_t_8 == ((unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L1_error)
+    (__pyx_v_rev_comp[__pyx_v_i]) = __pyx_t_8;
   }
 
-  /* "raw.pyx":34
+  /* "raw.pyx":37
  *         rev_comp[i] = complement(dna_sequence[n - i - 1])
  * 
- *     result = bytes(<char*>rev_comp, n)             # <<<<<<<<<<<<<<
+ *     result = PyBytes_FromStringAndSize(<char*>rev_comp, n)             # <<<<<<<<<<<<<<
  *     free(rev_comp)
  *     return result
  */
-  __pyx_t_7 = __Pyx_PyBytes_FromString(((char *)__pyx_v_rev_comp)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7)) __PYX_ERR(0, 34, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8)) __PYX_ERR(0, 34, __pyx_L1_error);
-  __pyx_t_7 = 0;
-  __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)(&PyBytes_Type)), __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_v_result = ((PyObject*)__pyx_t_8);
-  __pyx_t_8 = 0;
+  __pyx_t_3 = PyBytes_FromStringAndSize(((char *)__pyx_v_rev_comp), __pyx_v_n); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_v_result = ((PyObject*)__pyx_t_3);
+  __pyx_t_3 = 0;
 
-  /* "raw.pyx":35
+  /* "raw.pyx":38
  * 
- *     result = bytes(<char*>rev_comp, n)
+ *     result = PyBytes_FromStringAndSize(<char*>rev_comp, n)
  *     free(rev_comp)             # <<<<<<<<<<<<<<
  *     return result
  */
   free(__pyx_v_rev_comp);
 
-  /* "raw.pyx":36
- *     result = bytes(<char*>rev_comp, n)
+  /* "raw.pyx":39
+ *     result = PyBytes_FromStringAndSize(<char*>rev_comp, n)
  *     free(rev_comp)
  *     return result             # <<<<<<<<<<<<<<
  */
@@ -2711,7 +2808,7 @@ static PyObject *__pyx_pf_3raw_reverse_complement(CYTHON_UNUSED PyObject *__pyx_
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "raw.pyx":17
+  /* "raw.pyx":18
  *         return b'N'[0]  # Unknown base fallback
  * 
  * def reverse_complement(bytes dna_sequence):             # <<<<<<<<<<<<<<
@@ -2721,9 +2818,7 @@ static PyObject *__pyx_pf_3raw_reverse_complement(CYTHON_UNUSED PyObject *__pyx_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("raw.reverse_complement", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -2751,10 +2846,12 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
   __Pyx_StringTabEntry __pyx_string_tab[] = {
     {&__pyx_n_b_A, __pyx_k_A, sizeof(__pyx_k_A), 0, 0, 0, 1},
     {&__pyx_n_b_C, __pyx_k_C, sizeof(__pyx_k_C), 0, 0, 0, 1},
+    {&__pyx_kp_u_Failed_to_allocate_memory, __pyx_k_Failed_to_allocate_memory, sizeof(__pyx_k_Failed_to_allocate_memory), 0, 1, 0, 0},
     {&__pyx_n_b_G, __pyx_k_G, sizeof(__pyx_k_G), 0, 0, 0, 1},
+    {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
     {&__pyx_n_b_N, __pyx_k_N, sizeof(__pyx_k_N), 0, 0, 0, 1},
     {&__pyx_n_b_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 0, 0, 1},
-    {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
+    {&__pyx_n_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_dna_sequence, __pyx_k_dna_sequence, sizeof(__pyx_k_dna_sequence), 0, 0, 1, 1},
@@ -2776,7 +2873,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 34, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2787,17 +2885,28 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "raw.pyx":17
+  /* "raw.pyx":31
+ *     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)
+ *     if not rev_comp:
+ *         raise MemoryError("Failed to allocate memory")             # <<<<<<<<<<<<<<
+ * 
+ *     cdef Py_ssize_t i
+ */
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Failed_to_allocate_memory); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
+
+  /* "raw.pyx":18
  *         return b'N'[0]  # Unknown base fallback
  * 
  * def reverse_complement(bytes dna_sequence):             # <<<<<<<<<<<<<<
  *     """
  *     Computes the reverse complement of a given DNA sequence.
  */
-  __pyx_tuple_ = PyTuple_Pack(5, __pyx_n_s_dna_sequence, __pyx_n_s_n, __pyx_n_s_rev_comp, __pyx_n_s_i, __pyx_n_s_result); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple_);
-  __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_raw_pyx, __pyx_n_s_reverse_complement, 17, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(5, __pyx_n_s_dna_sequence, __pyx_n_s_n, __pyx_n_s_rev_comp, __pyx_n_s_i, __pyx_n_s_result); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__2);
+  __Pyx_GIVEREF(__pyx_tuple__2);
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_raw_pyx, __pyx_n_s_reverse_complement, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2861,10 +2970,30 @@ static int __Pyx_modinit_type_init_code(void) {
 
 static int __Pyx_modinit_type_import_code(void) {
   __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
+  __pyx_t_1 = PyImport_ImportModule(__Pyx_BUILTIN_MODULE_NAME); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_ptype_7cpython_4type_type = __Pyx_ImportType_3_0_12(__pyx_t_1, __Pyx_BUILTIN_MODULE_NAME, "type", 
+  #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
+  sizeof(PyTypeObject), __PYX_GET_STRUCT_ALIGNMENT_3_0_12(PyTypeObject),
+  #elif CYTHON_COMPILING_IN_LIMITED_API
+  sizeof(PyTypeObject), __PYX_GET_STRUCT_ALIGNMENT_3_0_12(PyTypeObject),
+  #else
+  sizeof(PyHeapTypeObject), __PYX_GET_STRUCT_ALIGNMENT_3_0_12(PyHeapTypeObject),
+  #endif
+  __Pyx_ImportType_CheckSize_Warn_3_0_12); if (!__pyx_ptype_7cpython_4type_type) __PYX_ERR(1, 9, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_modinit_variable_import_code(void) {
@@ -3153,7 +3282,7 @@ if (!__Pyx_RefNanny) {
   (void)__Pyx_modinit_variable_export_code();
   (void)__Pyx_modinit_function_export_code();
   (void)__Pyx_modinit_type_init_code();
-  (void)__Pyx_modinit_type_import_code();
+  if (unlikely((__Pyx_modinit_type_import_code() < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
   (void)__Pyx_modinit_variable_import_code();
   (void)__Pyx_modinit_function_import_code();
   /*--- Execution code ---*/
@@ -3161,16 +3290,16 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "raw.pyx":17
+  /* "raw.pyx":18
  *         return b'N'[0]  # Unknown base fallback
  * 
  * def reverse_complement(bytes dna_sequence):             # <<<<<<<<<<<<<<
  *     """
  *     Computes the reverse complement of a given DNA sequence.
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3raw_1reverse_complement, 0, __pyx_n_s_reverse_complement, NULL, __pyx_n_s_raw, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3raw_1reverse_complement, 0, __pyx_n_s_reverse_complement, NULL, __pyx_n_s_raw, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_reverse_complement, __pyx_t_2) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_reverse_complement, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "raw.pyx":1
@@ -3989,6 +4118,247 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
             "NULL result without error in PyObject_Call");
     }
     return result;
+}
+#endif
+
+/* RaiseException */
+#if PY_MAJOR_VERSION < 3
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
+    __Pyx_PyThreadState_declare
+    CYTHON_UNUSED_VAR(cause);
+    Py_XINCREF(type);
+    if (!value || value == Py_None)
+        value = NULL;
+    else
+        Py_INCREF(value);
+    if (!tb || tb == Py_None)
+        tb = NULL;
+    else {
+        Py_INCREF(tb);
+        if (!PyTraceBack_Check(tb)) {
+            PyErr_SetString(PyExc_TypeError,
+                "raise: arg 3 must be a traceback or None");
+            goto raise_error;
+        }
+    }
+    if (PyType_Check(type)) {
+#if CYTHON_COMPILING_IN_PYPY
+        if (!value) {
+            Py_INCREF(Py_None);
+            value = Py_None;
+        }
+#endif
+        PyErr_NormalizeException(&type, &value, &tb);
+    } else {
+        if (value) {
+            PyErr_SetString(PyExc_TypeError,
+                "instance exception may not have a separate value");
+            goto raise_error;
+        }
+        value = type;
+        type = (PyObject*) Py_TYPE(type);
+        Py_INCREF(type);
+        if (!PyType_IsSubtype((PyTypeObject *)type, (PyTypeObject *)PyExc_BaseException)) {
+            PyErr_SetString(PyExc_TypeError,
+                "raise: exception class must be a subclass of BaseException");
+            goto raise_error;
+        }
+    }
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrRestore(type, value, tb);
+    return;
+raise_error:
+    Py_XDECREF(value);
+    Py_XDECREF(type);
+    Py_XDECREF(tb);
+    return;
+}
+#else
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
+    PyObject* owned_instance = NULL;
+    if (tb == Py_None) {
+        tb = 0;
+    } else if (tb && !PyTraceBack_Check(tb)) {
+        PyErr_SetString(PyExc_TypeError,
+            "raise: arg 3 must be a traceback or None");
+        goto bad;
+    }
+    if (value == Py_None)
+        value = 0;
+    if (PyExceptionInstance_Check(type)) {
+        if (value) {
+            PyErr_SetString(PyExc_TypeError,
+                "instance exception may not have a separate value");
+            goto bad;
+        }
+        value = type;
+        type = (PyObject*) Py_TYPE(value);
+    } else if (PyExceptionClass_Check(type)) {
+        PyObject *instance_class = NULL;
+        if (value && PyExceptionInstance_Check(value)) {
+            instance_class = (PyObject*) Py_TYPE(value);
+            if (instance_class != type) {
+                int is_subclass = PyObject_IsSubclass(instance_class, type);
+                if (!is_subclass) {
+                    instance_class = NULL;
+                } else if (unlikely(is_subclass == -1)) {
+                    goto bad;
+                } else {
+                    type = instance_class;
+                }
+            }
+        }
+        if (!instance_class) {
+            PyObject *args;
+            if (!value)
+                args = PyTuple_New(0);
+            else if (PyTuple_Check(value)) {
+                Py_INCREF(value);
+                args = value;
+            } else
+                args = PyTuple_Pack(1, value);
+            if (!args)
+                goto bad;
+            owned_instance = PyObject_Call(type, args, NULL);
+            Py_DECREF(args);
+            if (!owned_instance)
+                goto bad;
+            value = owned_instance;
+            if (!PyExceptionInstance_Check(value)) {
+                PyErr_Format(PyExc_TypeError,
+                             "calling %R should have returned an instance of "
+                             "BaseException, not %R",
+                             type, Py_TYPE(value));
+                goto bad;
+            }
+        }
+    } else {
+        PyErr_SetString(PyExc_TypeError,
+            "raise: exception class must be a subclass of BaseException");
+        goto bad;
+    }
+    if (cause) {
+        PyObject *fixed_cause;
+        if (cause == Py_None) {
+            fixed_cause = NULL;
+        } else if (PyExceptionClass_Check(cause)) {
+            fixed_cause = PyObject_CallObject(cause, NULL);
+            if (fixed_cause == NULL)
+                goto bad;
+        } else if (PyExceptionInstance_Check(cause)) {
+            fixed_cause = cause;
+            Py_INCREF(fixed_cause);
+        } else {
+            PyErr_SetString(PyExc_TypeError,
+                            "exception causes must derive from "
+                            "BaseException");
+            goto bad;
+        }
+        PyException_SetCause(value, fixed_cause);
+    }
+    PyErr_SetObject(type, value);
+    if (tb) {
+      #if PY_VERSION_HEX >= 0x030C00A6
+        PyException_SetTraceback(value, tb);
+      #elif CYTHON_FAST_THREAD_STATE
+        PyThreadState *tstate = __Pyx_PyThreadState_Current;
+        PyObject* tmp_tb = tstate->curexc_traceback;
+        if (tb != tmp_tb) {
+            Py_INCREF(tb);
+            tstate->curexc_traceback = tb;
+            Py_XDECREF(tmp_tb);
+        }
+#else
+        PyObject *tmp_type, *tmp_value, *tmp_tb;
+        PyErr_Fetch(&tmp_type, &tmp_value, &tmp_tb);
+        Py_INCREF(tb);
+        PyErr_Restore(tmp_type, tmp_value, tb);
+        Py_XDECREF(tmp_tb);
+#endif
+    }
+bad:
+    Py_XDECREF(owned_instance);
+    return;
+}
+#endif
+
+/* TypeImport */
+#ifndef __PYX_HAVE_RT_ImportType_3_0_12
+#define __PYX_HAVE_RT_ImportType_3_0_12
+static PyTypeObject *__Pyx_ImportType_3_0_12(PyObject *module, const char *module_name, const char *class_name,
+    size_t size, size_t alignment, enum __Pyx_ImportType_CheckSize_3_0_12 check_size)
+{
+    PyObject *result = 0;
+    char warning[200];
+    Py_ssize_t basicsize;
+    Py_ssize_t itemsize;
+#if CYTHON_COMPILING_IN_LIMITED_API
+    PyObject *py_basicsize;
+    PyObject *py_itemsize;
+#endif
+    result = PyObject_GetAttrString(module, class_name);
+    if (!result)
+        goto bad;
+    if (!PyType_Check(result)) {
+        PyErr_Format(PyExc_TypeError,
+            "%.200s.%.200s is not a type object",
+            module_name, class_name);
+        goto bad;
+    }
+#if !CYTHON_COMPILING_IN_LIMITED_API
+    basicsize = ((PyTypeObject *)result)->tp_basicsize;
+    itemsize = ((PyTypeObject *)result)->tp_itemsize;
+#else
+    py_basicsize = PyObject_GetAttrString(result, "__basicsize__");
+    if (!py_basicsize)
+        goto bad;
+    basicsize = PyLong_AsSsize_t(py_basicsize);
+    Py_DECREF(py_basicsize);
+    py_basicsize = 0;
+    if (basicsize == (Py_ssize_t)-1 && PyErr_Occurred())
+        goto bad;
+    py_itemsize = PyObject_GetAttrString(result, "__itemsize__");
+    if (!py_itemsize)
+        goto bad;
+    itemsize = PyLong_AsSsize_t(py_itemsize);
+    Py_DECREF(py_itemsize);
+    py_itemsize = 0;
+    if (itemsize == (Py_ssize_t)-1 && PyErr_Occurred())
+        goto bad;
+#endif
+    if (itemsize) {
+        if (size % alignment) {
+            alignment = size % alignment;
+        }
+        if (itemsize < (Py_ssize_t)alignment)
+            itemsize = (Py_ssize_t)alignment;
+    }
+    if ((size_t)(basicsize + itemsize) < size) {
+        PyErr_Format(PyExc_ValueError,
+            "%.200s.%.200s size changed, may indicate binary incompatibility. "
+            "Expected %zd from C header, got %zd from PyObject",
+            module_name, class_name, size, basicsize+itemsize);
+        goto bad;
+    }
+    if (check_size == __Pyx_ImportType_CheckSize_Error_3_0_12 &&
+            ((size_t)basicsize > size || (size_t)(basicsize + itemsize) < size)) {
+        PyErr_Format(PyExc_ValueError,
+            "%.200s.%.200s size changed, may indicate binary incompatibility. "
+            "Expected %zd from C header, got %zd-%zd from PyObject",
+            module_name, class_name, size, basicsize, basicsize+itemsize);
+        goto bad;
+    }
+    else if (check_size == __Pyx_ImportType_CheckSize_Warn_3_0_12 && (size_t)basicsize > size) {
+        PyOS_snprintf(warning, sizeof(warning),
+            "%s.%s size changed, may indicate binary incompatibility. "
+            "Expected %zd from C header, got %zd from PyObject",
+            module_name, class_name, size, basicsize);
+        if (PyErr_WarnEx(NULL, warning, 0) < 0) goto bad;
+    }
+    return (PyTypeObject *)result;
+bad:
+    Py_XDECREF(result);
+    return NULL;
 }
 #endif
 
@@ -6029,7 +6399,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__3);
+        name = __Pyx_NewRef(__pyx_n_s__4);
     }
     return name;
 }

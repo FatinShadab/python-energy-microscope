@@ -1,6 +1,7 @@
 # cython: language_level=3
 from libc.stdlib cimport malloc, free
 from libc.string cimport memcpy
+from cpython.bytes cimport PyBytes_FromStringAndSize
 
 cdef unsigned char complement(unsigned char base):
     if base == b'A'[0]:
@@ -17,7 +18,7 @@ cdef unsigned char complement(unsigned char base):
 def reverse_complement(bytes dna_sequence):
     """
     Computes the reverse complement of a given DNA sequence.
-    
+
     Args:
         dna_sequence (bytes): The input DNA sequence in bytes (e.g., b"ATGC").
 
@@ -26,11 +27,13 @@ def reverse_complement(bytes dna_sequence):
     """
     cdef Py_ssize_t n = len(dna_sequence)
     cdef unsigned char* rev_comp = <unsigned char*>malloc(n)
-    cdef Py_ssize_t i
+    if not rev_comp:
+        raise MemoryError("Failed to allocate memory")
 
+    cdef Py_ssize_t i
     for i in range(n):
         rev_comp[i] = complement(dna_sequence[n - i - 1])
 
-    result = bytes(<char*>rev_comp, n)
+    result = PyBytes_FromStringAndSize(<char*>rev_comp, n)
     free(rev_comp)
     return result
