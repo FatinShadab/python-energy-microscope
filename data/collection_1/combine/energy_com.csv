@@ -1,4 +1,4 @@
-algorithm,cpython,ctypes,cython,pycompile,pypy
+algorithm,cpython_μJ,ctypes_μJ,cython_μJ,pycompile_μJ,pypy_μJ
 K_Nucleotide,76346.22,74972.94,79715.36,72906.34,84971.76
 binary_trees,388241210.72,32711186.98,29055706.9,389793671.32,56400486.8
 fannkuch_redux,71774177.82,2445803.04,52746263.9,71239820.02,15573470.9
