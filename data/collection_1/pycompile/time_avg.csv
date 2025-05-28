@@ -1,4 +1,5 @@
 filename,execution_time (s)
+nbody_pycompile,49.41032201766968
 knn_pycompile,0.8175534677505493
 spectral_norm_pycompile,3.668473448753357
 strassen_pycompile,3.49222993850708
@@ -13,4 +14,3 @@ n_queens_pycompile,18.408292117118837
 regex_redux_pycompile,0.011072044372558593
 sieve_pycompile,11.924428782463075
 fannkuch_redux_pycompile,15.602048382759094
-nbody_pycompile,49.41032201766968

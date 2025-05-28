@@ -1,4 +1,5 @@
 filename,average_package (uJ)
+nbody_pycompile,249711052.64
 knn_pycompile,4512045.32
 spectral_norm_pycompile,16382455.64
 strassen_pycompile,16690068.36
@@ -13,4 +14,3 @@ n_queens_pycompile,103317163.54
 regex_redux_pycompile,70723.7
 sieve_pycompile,79364253.6
 fannkuch_redux_pycompile,71239820.02
-nbody_pycompile,249711052.64
