@@ -1,0 +1,6 @@
+method,energy_mean_μJ,time_mean_s,carbon_mean_gCO2eq
+cpython,66924044.287,11.684,0.032
+ctypes,17919874.203,2.879,0.009
+cython,26667469.331,4.767,0.013
+pycompile,65586519.029,12.688,0.031
+pypy,26746094.069,4.581,0.013
