@@ -1,6 +1,6 @@
 filename,execution_time (s)
 spectral_norm_cpython,3.679777355194092
-pi_digits_cpython,0.005646169185638428
+pi_digits_cpython,0.01085843563079834
 hanoi_cpython,5.192964210510254
 reverse_complement_cpython,3.30131404876709
 nbody_cpython,53.07476050376892
