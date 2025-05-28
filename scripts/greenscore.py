@@ -95,8 +95,8 @@ def create_mean_score_df(
 
     # Combine into a single DataFrame
     mean_score_df = pd.DataFrame({
-        'method': energy_mean.index,
-        'energy_mean_J': energy_mean.values,
+        'method': energy_mean.index.str.replace(r'_.*$', '', regex=True),
+        'energy_mean': energy_mean.values,
         'time_mean': time_mean.values,
         'carbon_mean': carbon_mean.values
     })
@@ -138,7 +138,7 @@ def calculate_greenscore(df_energy, df_time, df_carbon, alpha=0.4, beta=0.4, gam
 
     # Step 3: Compute GreenScore = α·energy + β·carbon + γ·time
     mean_df["green_score"] = (
-        alpha * mean_df["energy_mean_J"] +
+        alpha * mean_df["energy_mean"] +
         beta * mean_df["carbon_mean"] +
         gamma * mean_df["time_mean"]
     )
