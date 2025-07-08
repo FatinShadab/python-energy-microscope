@@ -19,3 +19,4 @@
     - [Energy Module](/energy_module/)
     - [Performance Module](/performance_module/)
     - [Visualization](/visualization/)
+- [Data] (/data)
