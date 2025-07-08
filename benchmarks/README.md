@@ -1,76 +1,90 @@
-# Benchmarks Research
+# **Benchmarks Research**
 
-This directory contains benchmarks for various algorithms, implemented in multiple Python execution methods.
+This directory contains the benchmark implementations used in our study:
+**“Python Under the Microscope: A Comparative Energy Analysis of Execution Methods.”**
+The benchmarks are designed to be minimal, CPU-bound, and reproducible across multiple Python execution methods.
 
-## Algorithm List
-> Mixture of various algorithms with algorithms from [CLBG (Computer Language Benchmarks Game)](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html)
 
-- **CLBG Algorithms**
-    1. Binary Trees
-    2. Fannkuch-Redux
-    3. Fasta
-    4. K-Nucleotide
-    5. Mandelbrot
-    6. N-Body
-    7. Pi-Digits
-    8. Regex-Redux
-    9. Reverse-Complement
-    10. Spectral-Norm
-- **Extra Algorithms**
-    1. KNN
-    2. N-Queens
-    3. Strassen
-    4. Towers of Hanoi
-    5. Sieve-of-Eratosthenes
+## **Benchmark Suite Overview**
 
-## Directory Structure
+The benchmark set includes **15 diverse, compute-intensive algorithms**, combining:
 
-Each algorithm is placed in a separate folder with the following structure:
+* ✅ **10 standard programs** adapted from the [Computer Language Benchmarks Game (CLBG)](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html)
+* ✅ **5 additional algorithms** selected for recursive, matrix, and search-based operations
 
-```
+These tasks were chosen to evaluate energy, carbon, and runtime metrics across Python execution methods in a controlled setup.
+
+### CLBG-Based Algorithms (10)
+
+| No. | Algorithm          | Description                                                       |
+| --- | ------------------ | ----------------------------------------------------------------- |
+| 1   | Binary Trees       | Builds and recursively traverses trees to test memory & recursion |
+| 2   | Fannkuch-Redux     | Permutation-based benchmarking of loops and array access          |
+| 3   | Fasta              | Generates pseudo-DNA sequences for bioinformatics-like workloads  |
+| 4   | K-Nucleotide       | Frequency counting of substrings in DNA sequences                 |
+| 5   | Mandelbrot         | Computes complex numbers in nested loops to render fractals       |
+| 6   | N-Body             | Physics-based simulation of gravitational forces                  |
+| 7   | Pi-Digits          | Spigot algorithm for calculating digits of Pi                     |
+| 8   | Regex-Redux        | Regular expression substitution over large genomic text           |
+| 9   | Reverse-Complement | Memory-heavy string processing for DNA strand reversal            |
+| 10  | Spectral-Norm      | Matrix-vector multiplication and spectral norm estimation         |
+
+
+### Supplementary Algorithms (5)
+
+| No. | Algorithm             | Description                                                        |
+| --- | --------------------- | ------------------------------------------------------------------ |
+| 11  | K-Nearest Neighbors   | Distance-based classification to evaluate memory and data locality |
+| 12  | N-Queens              | Recursive backtracking for constraint satisfaction problems        |
+| 13  | Strassen              | Divide-and-conquer matrix multiplication                           |
+| 14  | Towers of Hanoi       | Classic recursion-heavy puzzle to test deep call stacks            |
+| 15  | Sieve of Eratosthenes | Prime number generation using array filtering loops                |
+
+
+## **Directory Structure**
+
+Each algorithm has its own folder containing identical implementations (logic preserved) across the five Python execution methods:
+
+```bash
 benchmarks/
-│
 ├── Binary-Trees/
-│   ├── README.md (algorithm explanation)
-│   ├── CPython/
-│   ├── PyPy/
-│   ├── Ctypes/
-│   └── Cython/
+│   ├── README.md         # Algorithm explanation, input/output, and complexity
+│   ├── CPython/          # Standard interpreter
+│   ├── PyPy/             # Compatible with PyPy JIT runtime
+│   ├── Ctypes/           # Uses shared C libraries and FFI via ctypes
+│   ├── Cython/           # Optimized AOT-compiled Python
+│   └── py_compile/       # Precompiled .pyc bytecode form (Python optimize mode)
 │
-├── Fannkuch-Redux/
-│   ├── README.md (algorithm explanation)
-│   ├── CPython/
-│   ├── PyPy/
-│   ├── Ctypes/
-│   └── Cython/
-│
-...
-...
-│
-└── N-Queens/
-    ├── README.md (algorithm explanation)
-    ├── CPython/
-    ├── PyPy/
-    ├── Ctypes/
-    └── Cython/
+├── Mandelbrot/
+│   └── ...
+└── ...
 ```
 
-## Algorithm Folders
+---
 
-Each algorithm has its own folder with the following structure:
+## Inside Each Algorithm Folder
 
-### `README.md` (Algorithm Explanation)
-This file explains the **algorithm**, its **use case**, and **overview**. It may also provide information on the **input/output** and **complexity** of the algorithm.
+| Component     | Description                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| `README.md`   | Short description of the algorithm, input size, and runtime complexity     |
+| `CPython/`    | Unmodified Python version for baseline measurements                        |
+| `PyPy/`       | Same script, evaluated under the PyPy JIT runtime                          |
+| `Ctypes/`     | Python script + `.c` source code + `setup.py` or `Makefile` for C bindings |
+| `Cython/`     | `.pyx` source, `setup.py`, and compiled extension module                   |
+| `py_compile/` | Same as CPython, but executed from compiled `.pyc` bytecode                |
 
-### Implementation Folders (CPython, PyPy, Ctypes, Cython)
-Each algorithm has four subfolders for implementation in different execution environments:
+---
 
-- **CPython**: Standard Python implementation.
-- **PyPy**: PyPy-specific optimizations (usually no changes needed, but marked for the purpose of this research).
-- **Ctypes**: Implementation using C libraries and Python's `ctypes` library for low-level memory management.
-- **Cython**: Implementation using Cython for optimized performance by converting Python code to C.
+## Execution Consistency Notes
 
-## Example Folder Structure for One Algorithm (Binary-Trees)
+* All implementations are functionally identical across methods.
+* Inputs are fixed and preloaded to reduce I/O impact.
+* Only CPU-intensive logic is measured—no disk, network, or third-party packages.
+* Timing and energy profiling are wrapped using consistent decorators.
+
+---
+
+## Example Structure: `Binary-Trees`
 
 ```
 benchmarks/
@@ -81,7 +95,21 @@ benchmarks/
     ├── PyPy/
     │   └── binary_tree.py
     ├── Ctypes/
-    │   └── binary_tree_ctypes.py
-    └── Cython/
-        └── binary_tree.pyx
+    │   ├── binary_tree_ctypes.py
+    │   ├── tree.c
+    │   └── setup.py
+    ├── Cython/
+    │   ├── binary_tree.pyx
+    │   └── setup.py
+    └── py_compile/
+        └── binary_tree.py
 ```
+
+---
+
+## Reproducibility
+
+* Every folder contains a self-contained benchmark that can be run using the measurement scripts.
+* Each run generates logs in `.csv` and `.json` format for energy, time, and carbon estimation.
+
+For setup instructions, refer to the top-level [README.md](../README.md)
