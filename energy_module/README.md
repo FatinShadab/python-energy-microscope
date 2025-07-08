@@ -1,98 +1,93 @@
-# Time Modules
+# Energy Modules
 
-This directory contains scripts and decorators used to measure **execution time** during benchmark runs in our study:
+This directory contains scripts, wrappers, and configuration files used to measure **CPU energy consumption** during the execution of Python benchmarks in our study:
 **"Python Under the Microscope: A Comparative Energy Analysis of Execution Methods."**
 
-All time readings are collected using Python’s native `time.time()` method, offering **lightweight, reproducible, and fine-grained runtime profiling** with minimal overhead.
+All energy readings are captured via **Intel RAPL** counters using the `pyRAPL` library, providing **precise, reproducible, and software-level energy profiling** on Intel-based systems.
 
 
 ## Directory Structure
 
 ```
-time_modules/
-├── measure_time_to_csv.py     # Benchmark decorator for time logging
-└── README.md                  # This file
+energy_modules/
+├── __pyRAPL__/
+│   ├── measure_pyrapl.py       # Benchmark wrapper with pyRAPL decorator
+measurement
+└── README.md                   # This file
 ```
 
 
 ## Module Description
 
-| Module                   | Description                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------- |
-| `measure_time_to_csv.py` | Decorator-based utility to **wrap benchmark functions** and log their runtime |
-| `time.time()`            | Standard Python function used for **wall-clock time measurement**             |
-| `psutil` + `platform`    | Libraries used to log system configuration during measurement                 |
+| Module              | Description                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| `measure_pyrapl.py` | Core script used to **wrap and execute a benchmark** under energy measurement.      |
+| `pyRAPL`            | Python library for accessing **Intel RAPL (Running Average Power Limit)** counters. |
+| `setup_pyrapl.md`   | Contains step-by-step setup for configuring permissions and dependencies.           |
 
 
 ## Features
 
-* Measures runtime in **seconds** using `time.time()` with microsecond resolution.
-* Executes the benchmark **n times**, logs each repetition’s duration in a structured CSV.
-* Automatically logs **system information** (CPU, RAM, OS, architecture) into a JSON file.
-* Output is saved per benchmark, and organized under a dedicated folder (`time_benchmark/`).
-* Suitable for measuring short or long-running CPU-bound Python scripts.
+* Uses Intel RAPL to read energy usage in **microjoules (μJ)** for the CPU package.
+* Integrates with your benchmark using **Python decorators**, ensuring low overhead.
+* Logs energy measurements in **CSV and JSON** for easy downstream analysis.
+* Supports batch execution and repeat measurement with consistent sampling conditions.
+* Focuses on **runtime-only** power usage (excludes build/compilation energy).
+
+> ⚠️ Only works on Intel-based Linux machines with RAPL access.
 
 
 ## Setup Instructions
 
-This module uses only standard Python libraries except for `psutil`. Install it as follows:
+Follow the setup guide in [`setup_pyrapl.md`](__pyRAPL__/setup_pyrapl.md) to:
 
-```bash
-pip install psutil
-```
+1. Install `pyRAPL`:
 
-No root privileges or platform-specific configurations are required.
+   ```bash
+   pip install pyRAPL
+   ```
 
+2. Ensure access to `/sys/class/powercap/` (requires root or permissions fix):
+
+   ```bash
+   sudo chmod -R a+r /sys/class/powercap/intel-rapl:*/energy_uj
+   ```
+
+3. (Optional) Set CPU affinity and disable turbo boost for consistent readings.
 
 ## Example Usage
 
-```python
-from measure_time_to_csv import measure_time_to_csv
+To measure the energy usage of a benchmark (e.g., `binary_tree.py`):
 
-@measure_time_to_csv(n=50, csv_filename="binary_tree", folder_name="time_benchmark")
-def run_binary_tree():
-    # Your benchmark logic here
-    pass
+```bash
+cd energy_modules/__pyRAPL__/
 
-run_binary_tree()
+nice -n -20 ionice -c2 -n0 python measure_pyrapl.py ../../benchmarks/Binary-Trees/CPython/binary_tree.py
 ```
 
-This will:
+This command:
 
-* Run the `run_binary_tree()` function 50 times
-* Save results to `time_benchmark/binary_tree.csv`
-* Save system metadata to `time_benchmark/system_info.json`
-
+* Gives high CPU and I/O priority to reduce external noise.
+* Executes the benchmark wrapped in a pyRAPL measurement context.
+* Saves energy logs to a structured CSV file for post-analysis.
 
 ## Output Format
 
-### `CSV`: Per-run execution log
+* Output is saved as both `.csv` and `.json`.
+* Fields include:
 
-| timestamp           | function          | run | execution\_time (s) |
-| ------------------- | ----------------- | --- | ------------------- |
-| 2025-07-09T08:32:01 | run\_binary\_tree | 1   | 0.01873             |
-| ...                 | ...               | ... | ...                 |
+  * **timestamp**
+  * **benchmark name**
+  * **energy (μJ)**
+  * **duration (s)**
+  * **package/core/domain (if available)**
 
-### `JSON`: System information
+## Repetition and Batch Execution
 
-```json
-{
-  "CPU": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
-  "RAM_GB": 15.85,
-  "OS": "Linux 5.15.0-91-generic",
-  "Architecture": "x86_64",
-  "Test_Result_File": "time_benchmark/binary_tree.csv"
-}
-```
-
-
-## Repetition and Statistical Significance
-
-In this study, each benchmark was executed **50 times** to reduce noise and improve result stability. This helps account for background processes, thermal variations, and OS scheduling effects.
-
+In experiments, each benchmark was run **50 times** to account for natural fluctuations and background processes. You can modify the wrapper to include repetitions or batch folder traversal.
 
 ## Notes on Accuracy
 
-* `time.time()` captures **wall-clock duration**, which is suitable for coarse-grained benchmarking.
-* Results were averaged across runs, then normalized per algorithm for **GreenScore** computation.
-* While not cycle-accurate like hardware timers, this approach provides consistent, cross-platform results suitable for comparative analysis.
+* RAPL provides **hardware-level counters** for energy estimation.
+* We measure only **CPU Package Power** as DRAM counters are often unavailable on laptops.
+* Results were averaged across 50 runs and normalized per algorithm for fair cross-method comparison.
