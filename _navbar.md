@@ -17,6 +17,6 @@
 - Modules
     - [Time Module](/time_module/)
     - [Energy Module](/energy_module/)
-    - [Performance Module](/performance_module/)
     - [Visualization](/visualization/)
-- [Data] (/data)
+    - [Scripts](/scripts/)
+- [Data](/data/)
