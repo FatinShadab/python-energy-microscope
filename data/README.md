@@ -49,10 +49,12 @@ data/
 If you use this dataset in your work, please cite:
 
 ```bibtex
-@dataset{shadab2025microscope,
-  author = {Shadab, Md Fatin},
-  title  = {Python Energy Microscope Dataset},
-  year   = {2025},
-  url    = {https://www.kaggle.com/datasets/fatinshadab/python-energy-microscope-dataset}
+@misc{md__fatin_shadab_turja_2025,
+	title={Python Energy Microscope: Benchmarking 5 Execution},
+	url={https://www.kaggle.com/dsv/12207710},
+	DOI={10.34740/KAGGLE/DSV/12207710},
+	publisher={Kaggle},
+	author={Md. Fatin Shadab Turja},
+	year={2025}
 }
 ```
