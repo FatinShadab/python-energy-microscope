@@ -1,5 +1,13 @@
 import pandas as pd
 
+__WEIGHTS__ = [
+    (0.40, 0.40, 0.20), (0.45, 0.35, 0.20), (0.35, 0.45, 0.20),
+    (0.40, 0.35, 0.25), (0.40, 0.45, 0.15), (0.60, 0.30, 0.10),
+    (0.30, 0.60, 0.10), (0.50, 0.40, 0.10), (0.33, 0.33, 0.34),
+    (0.25, 0.50, 0.25), (0.50, 0.25, 0.25), (0.70, 0.20, 0.10),
+    (0.20, 0.20, 0.60), (1.00, 0.00, 0.00), (0.00, 1.00, 0.00)
+]
+
 def read_csv_files():
     # Prompt user for three file paths
     # file_paths = []
@@ -7,10 +15,16 @@ def read_csv_files():
     #     file_path = input(f"Enter the path for CSV file of {i}: ")
     #     file_paths.append(file_path)
 
+    # file_paths = [
+    #     '/home/eaegon/Documents/GITHUB/python-energy-microscope/data/collection_1/combine/energy_com.csv',
+    #     '/home/eaegon/Documents/GITHUB/python-energy-microscope/data/collection_1/combine/time_com.csv',
+    #     '/home/eaegon/Documents/GITHUB/python-energy-microscope/data/collection_1/combine/carbon_footprint.csv'
+    # ]
+
     file_paths = [
-        '/home/eaegon/Documents/GITHUB/python-energy-microscope/data/collection_1/combine/energy_com.csv',
-        '/home/eaegon/Documents/GITHUB/python-energy-microscope/data/collection_1/combine/time_com.csv',
-        '/home/eaegon/Documents/GITHUB/python-energy-microscope/data/collection_1/combine/carbon_footprint.csv'
+        'C:\\Users\\User\\OneDrive\\Documents\\GitHub\\python-energy-microscope\\data\\collection_1\\combine\\energy_com.csv',
+        'C:\\Users\\User\\OneDrive\\Documents\\GitHub\\python-energy-microscope\\data\\collection_1\\combine\\time_com.csv',
+        'C:\\Users\\User\\OneDrive\\Documents\\GitHub\\python-energy-microscope\\data\\collection_1\\combine\\carbon_footprint.csv'
     ]
 
     # Read the CSV files into DataFrames
@@ -147,7 +161,7 @@ def calculate_greenscore(df_energy, df_time, df_carbon, alpha=0.4, beta=0.4, gam
     green_score_df = mean_df.sort_values(by="green_score").reset_index(drop=True)
 
     # Step 5: Save the final ranked list
-    green_score_df.to_csv("green_score_ranking.csv", index=False)
+    green_score_df.to_csv(f"green_score_ranking_a{str(alpha).replace('.', '_')}_b{str(beta).replace('.', '_')}_g{str(gamma).replace('.', '_')}.csv", index=False)
     print("✅ Final Green Score ranking saved to: green_score_ranking.csv")
 
     return green_score_df
@@ -159,5 +173,7 @@ if __name__ == "__main__":
     for i, df in enumerate(dfs, start=1):
         print(f"\nPreview of DataFrame {i}:")
         print(df.head())
-        
-    calculate_greenscore(dfs[0], dfs[1], dfs[2])
+    
+    for weights in __WEIGHTS__:
+        print(f"\nCalculating GreenScore with weights: α={weights[0]}, β={weights[1]}, γ={weights[2]}")
+        calculate_greenscore(dfs[0], dfs[1], dfs[2], alpha=weights[0], beta=weights[1], gamma=weights[2])
