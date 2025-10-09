@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Python Energy Microscope: Source Code Repository"
+authors:
+  - family-names: "Md Fatin Shadab"
+    given-names: "Turja"
+  - family-names: "Hasan"
+    given-names: "Md Mahmudul"
+  - family-names: "Khan"
+    given-names: "Mehbuba"
+  - family-names: "Rahman"
+    given-names: "Md Naimur"
+  - family-names: "Irin"
+    given-names: "Adiba"
+  - family-names: "Ahmed"
+    given-names: "Sabbir"
+year: 2025
+repository-code: "https://github.com/FatinShadab/python-energy-microscope"
+url: "https://fatinshadab.github.io/python-energy-microscope/"
+type: software
+abstract: >
+  Python Energy Microscope provides a comparative analysis framework for evaluating 
+  the runtime performance, energy consumption, and carbon emissions of Python execution 
+  methods, including CPython, PyPy, Cython, ctypes, and py_compile. The framework supports 
+  reproducible benchmarking and integrates energy profiling with sustainability metrics 
+  such as GreenScore.
+license: "MIT"
+keywords:
+  - Python
+  - Energy Efficiency
+  - Sustainability
+  - Benchmarking
+  - Software Performance
+  - Green Software
