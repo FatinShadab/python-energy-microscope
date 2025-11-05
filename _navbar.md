@@ -19,4 +19,5 @@
     - [Energy Module](/energy_module/)
     - [Visualization](/visualization/)
     - [Scripts](/scripts/)
+    - [synthetic_survey](/synthetic_survey/)
 - [Data](/data/)
