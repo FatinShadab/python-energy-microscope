@@ -128,7 +128,7 @@ python3 run_benchmarks.py
 
 ## Citation
 
-If you use this work, please cite:
+If you use this work, please cite -
 
 ```
 @article{shadab2025microscope,
